@@ -3,269 +3,282 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akash Mehra | AI & ML Engineer & Creative Builder Portfolio</title>
+  <title>Akash Mehra | AI/ML Engineer & Builder Mindspace</title>
   
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Portfolio of Akash Mehra, AI/ML Engineer and Creative Builder. Discover interactive deep learning skill systems, neural chess engines, 3D Rubik's cube project rendering, and talk to my AI Twin.">
-  <meta name="keywords" content="Akash Mehra, AI Engineer, ML Engineer, Deep Learning, PyTorch, YOLOv8, Computer Vision, RAG Systems, Portfolio, Creative Web Design">
+  <!-- SEO Optimization -->
+  <meta name="description" content="Journey through the neural mind of Akash Mehra, AI/ML Engineer and Builder. Explore interactive projects, skills network, and developmental timelines.">
+  <meta name="keywords" content="Akash Mehra, AI Engineer, ML Developer, Deep Learning, Computer Vision, MLOps, Holographic Portfolio">
   <meta name="author" content="Akash Mehra">
   
-  <!-- Preconnect to external services to speed up asset loading -->
+  <!-- Fonts Preconnection -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
-  <!-- CSS Stylesheet -->
+  <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Custom Cursor Follower -->
+  <!-- Custom Tracking Cursor Follower -->
   <div id="cur" aria-hidden="true"></div>
   <div id="cur-ring" aria-hidden="true"></div>
-  <div id="cur-dot" aria-hidden="true"></div>
 
-  <!-- Page Loader Overlay -->
-  <div id="loader" role="dialog" aria-modal="true" aria-label="Loading portfolio contents">
-    <div class="ld-grid"></div>
-    <div style="text-align:center">
-      <div class="ld-logo" id="ld-logo">AM<em>.</em></div>
-      <div class="ld-subtitle" style="margin-top:.5rem" id="ld-sub">initializing...</div>
+  <!-- Futuristic Neural Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-title">AM.core // Synaptic Link</div>
+      <div class="preloader-spinner-box">
+        <svg class="preloader-ring" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" stroke="rgba(251, 191, 36, 0.08)" stroke-width="4" fill="none" />
+          <circle class="preloader-ring-fill" id="preloader-ring-fill" cx="50" cy="50" r="40" stroke="var(--amber)" stroke-width="4" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" />
+        </svg>
+        <div class="preloader-percent" id="preloader-percent">0%</div>
+      </div>
+      <div class="preloader-logs" id="preloader-logs">
+        <div class="preloader-log-line">Initializing neural hardware...</div>
+      </div>
     </div>
-    <div class="ld-bar-track">
-      <div class="ld-bar" id="ld-bar"></div>
-    </div>
-    <div class="ld-status" id="ld-status">loading modules</div>
   </div>
 
-  <!-- Background Particle Canvas -->
+  <!-- Full-Screen Drifting Background Neural Network Canvas -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Sticky Navigation Header -->
-  <header>
-    <nav>
-      <div class="nav-logo">A<em>M</em></div>
-      <div class="nav-links">
-        <a class="nav-link hoverable" onclick="goTo('mind-sec')" role="button" tabindex="0">mind</a>
-        <a class="nav-link hoverable" onclick="goTo('skills-sec')" role="button" tabindex="0">skills</a>
-        <a class="nav-link hoverable" onclick="goTo('proj-sec')" role="button" tabindex="0">work</a>
-        <a class="nav-link hoverable" onclick="goTo('chess-sec')" role="button" tabindex="0">play</a>
-        <a class="nav-link hoverable" onclick="goTo('contact')" role="button" tabindex="0">connect</a>
-      </div>
-    </nav>
-  </header>
+  <!-- Achievements Unlock Alert toast popup -->
+  <div id="achievement-toast" aria-live="polite">
+    <span>🏆</span>
+    <span id="toast-title">Achievement Unlocked!</span>
+  </div>
 
-  <main>
-    <!-- Hero Console Console Section -->
-    <section id="hero">
-      <div class="h-chaos" id="h-chaos"></div>
-      <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none"></canvas>
-      <div class="h-center" style="z-index:10">
-        <div class="h-eye">AI · ML · BUILDER · EXPLORER · 2026</div>
-        <h1 class="h-name"><span class="line1">AKASH</span><span class="line2">MEHRA</span></h1>
-        <p class="h-role">Creative chaos → focused execution</p>
-        <div class="h-code" id="h-code"></div>
-        <div class="h-btns">
-          <button class="btn-p hoverable" onclick="goTo('proj-sec')">See my work</button>
-          <button class="btn-g hoverable" onclick="openAI()">Talk to my AI twin ✦</button>
+  <!-- STAGE 1: OPENING EXPERIENCE -->
+  <section class="screen-sec" id="opening-sec">
+    <!-- Orbiting Brain Canvas -->
+    <canvas id="brain-canvas"></canvas>
+    
+    <div class="opening-banner">
+      <div class="ob-label">neural core initialized</div>
+      <h1 class="ob-title">
+        <span>WELCOME TO MY BRAIN</span>
+      </h1>
+      <p class="ob-subtitle">
+        AI / ML Engineer · Builder · Competitive Thinker.<br>
+        Powered by curiosity, caffeine, and obsessive execution.
+      </p>
+      <button class="btn-enter hoverable" onclick="enterMind()">Enter My Mind</button>
+    </div>
+  </section>
+
+  <!-- STAGE 2: THE MIND SPACE -->
+  <section class="screen-sec hidden" id="universe-sec">
+    <!-- Sticky Control Header -->
+    <header class="uni-header">
+      <div class="uni-logo" onclick="resetToOpening()">A<span>M</span>.core</div>
+      
+      <!-- Redirect Navigation Links -->
+      <nav class="uni-nav">
+        <a class="hoverable" onclick="scrollToSection('interactive-space')">Mind Core</a>
+        <a class="hoverable" onclick="scrollToSection('terminal-sec')">Console</a>
+        <a class="hoverable" onclick="scrollToSection('projects-sec')">Projects</a>
+        <a class="hoverable" onclick="scrollToSection('skills-sec')">Skills</a>
+      </nav>
+
+      <div class="uni-actions">
+        <div class="caffeine-status" id="caffeine-status">
+          <div class="caffeine-dot"></div>
+          <span id="caffeine-txt">Caffeine: Normal</span>
         </div>
+        <button class="btn-focus hoverable" id="focus-btn" onclick="toggleFocusMode()">Focus Mode</button>
       </div>
-      <div class="h-scroll"><span>SCROLL</span><div class="h-scroll-line"></div></div>
-    </section>
+    </header>
 
-    <div class="divider"></div>
-
-    <!-- ADHD Infinite Marquee section -->
-    <section id="adhd" style="padding:3rem 0" aria-label="ADHD Thought Streams">
-      <div style="overflow:hidden;margin-bottom:1rem">
-        <div class="adhd-track" id="adhd-t1"></div>
+    <!-- Scrollable Space -->
+    <div class="universe-content">
+      
+      <!-- Isolated Top Fold for Floating Interactive Nodes -->
+      <div class="interactive-fold">
+        <!-- Nodes Interconnections SVG Layout -->
+        <svg id="network-svg"></svg>
+        <!-- Chaos and Grid Nodes Area -->
+        <div class="interactive-space" id="interactive-space"></div>
       </div>
-      <div style="overflow:hidden">
-        <div class="adhd-track rev" id="adhd-t2"></div>
-      </div>
-    </section>
 
-    <div class="divider"></div>
-
-    <!-- The Mind Canvas Graph Section -->
-    <section id="mind-sec" style="position:relative;z-index:1;padding:7rem 2rem">
-      <div style="max-width:1200px;margin:0 auto">
-        <div class="s-label reveal">the inner world</div>
-        <h2 class="s-title reveal">A mind in <span class="grad">constant motion</span></h2>
-        <p class="s-sub reveal">Every node is a thought. Every edge is a connection. Hover to discover how everything links. This is literally how I think — everything is related to everything.</p>
-        <div style="position:relative">
-          <canvas id="mind-canvas"></canvas>
-          <div class="mind-tooltip" id="mind-tip"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Capabilities / Skills Section -->
-    <section id="skills-sec" style="position:relative;z-index:1;padding:7rem 2rem">
-      <div style="max-width:1200px;margin:0 auto">
-        <div class="s-label reveal">capabilities</div>
-        <h2 class="s-title reveal">Skills that <span class="grad2">feed each other</span></h2>
-        <p class="s-sub reveal">Not a list. A living ecosystem. Hover any skill to feel the weight of it.</p>
-        <div class="skills-grid reveal" id="skills-grid"></div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Selected Work Projects Grid Section -->
-    <section id="proj-sec" style="position:relative;z-index:1;padding:7rem 2rem">
-      <div style="max-width:1200px;margin:0 auto">
-        <div class="s-label reveal">selected work</div>
-        <h2 class="s-title reveal">Things I <span class="grad">built</span> from scratch</h2>
-        <p class="s-sub reveal">Each started as a messy thought at 2am. Here's what survived.</p>
-        <div class="proj-grid reveal" id="proj-grid"></div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Interactive Coffee Clicker Section -->
-    <section class="coffee-sec" id="coffee-sec">
-      <div style="max-width:1000px;margin:0 auto">
-        <div class="s-label reveal">fuel source</div>
-        <h2 class="s-title reveal">Powered by <span class="grad3">coffee</span></h2>
-        <p class="s-sub reveal" style="margin-left:auto;margin-right:auto;text-align:center">Every great idea needed a brew. Click the mug. Keep clicking. You'll understand.</p>
-        <div class="coffee-interactive">
-          <canvas id="coffee-canvas" width="200" height="260"></canvas>
-          <div class="coffee-stats">
-            <div class="cstat"><div class="cstat-num" id="cups-count">0</div><div class="cstat-lbl">cups / month</div></div>
-            <div class="cstat"><div class="cstat-num" id="ideas-count">0</div><div class="cstat-lbl">ideas brewed</div></div>
-            <div class="cstat"><div class="cstat-num" id="bugs-count">0</div><div class="cstat-lbl">bugs fixed after 3rd cup</div></div>
-            <div class="cstat"><div class="cstat-num">∞</div><div class="cstat-lbl">caffeine threshold</div></div>
+      <!-- Command Center Contact Console -->
+      <div class="terminal-space">
+        <div class="term-container">
+          <div class="term-header">
+            <div class="term-dot" style="background:#ef4444"></div>
+            <div class="term-dot" style="background:#fbbf24"></div>
+            <div class="term-dot" style="background:#22c55e"></div>
+            <span style="font-size:11px;color:var(--text3);margin-left:8px">akash_mehra@core: ~</span>
           </div>
-        </div>
-        <div class="coffee-quotes reveal" id="coffee-quotes"></div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Chess Strategic Thinking Section -->
-    <section id="chess-sec" style="position:relative;z-index:1;padding:7rem 2rem">
-      <div id="chess-sec-inner">
-        <div class="chess-lore reveal-l">
-          <div class="s-label">strategic mind</div>
-          <h2 class="s-title">Chess is how I <span class="grad">think about code</span></h2>
-          <p>Every architecture decision is a position. Every refactor is a gambit. I've played 3,000+ games online. The losers taught me more than the wins.</p>
-          <p>The same mental model: evaluate deeply, see patterns fast, sacrifice the obvious move for the elegant one.</p>
-          <div class="quote">"Every pawn has the potential to become a queen. Every messy codebase has the potential to become a masterpiece."</div>
-          <p>Hover squares to see valid moves. Click to play against yourself — white to move.</p>
-        </div>
-        <div class="reveal-r">
-          <div class="chess-game-wrap">
-            <div class="cg-header">
-              <div class="cg-title">♟ INTERACTIVE BOARD</div>
-              <div class="cg-btns">
-                <button class="cg-btn hoverable" onclick="resetChess()">Reset</button>
-                <button class="cg-btn hoverable" onclick="flipBoard()">Flip</button>
-              </div>
+          <div class="term-body" id="term-body">
+            <div class="term-output">Akash Mehra Mind Core Terminal [Version 2.6.1]</div>
+            <div class="term-output">Type 'help' to check available commands.</div>
+            <div class="term-input-line">
+              <span class="term-prompt">guest@mind:~$</span>
+              <input type="text" class="term-input" id="term-input" autocomplete="off" spellcheck="false" autofocus>
             </div>
-            <div id="chess-board"></div>
-            <div class="cg-status" id="chess-status">White to move — click a piece</div>
+          </div>
+          <div class="term-actions-bar">
+            <button class="term-act-btn hoverable" onclick="runTermCommand('connect')">connect</button>
+            <button class="term-act-btn hoverable" onclick="runTermCommand('help')">help</button>
+            <button class="term-act-btn hoverable" onclick="runTermCommand('skills')">skills</button>
+            <button class="term-act-btn hoverable" onclick="runTermCommand('clear')">clear</button>
           </div>
         </div>
       </div>
-    </section>
 
-    <div class="divider"></div>
+      <!-- STATIC PROJECTS SHOWCASE SECTION -->
+      <section class="static-section" id="projects-sec">
+        <div class="sec-header">
+          <span class="sec-label">PRODUCTIONS</span>
+          <h2 class="sec-title">Core Systems Portfolio</h2>
+        </div>
+        <div class="projects-grid" id="projects-grid">
+          <!-- Dynamically populated from projectsData in mind-universe.js -->
+        </div>
+      </section>
 
-    <!-- Rubik's Cube 3D Debugging Section -->
-    <section id="rubik-sec">
-      <div id="rubik-sec-inner">
-        <div class="s-label reveal">pattern recognition</div>
-        <h2 class="s-title reveal">Rubik's Cube = <span class="grad2">debugging IRL</span></h2>
-        <p class="s-sub reveal">Scramble it. Solve it. Time yourself. Personal best: 23 seconds. The cube taught me that every problem has a state, every state has a move, and every move can be undone.</p>
-        <div class="rubik-layout reveal">
-          <div>
-            <div style="font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.8">Use the buttons to rotate faces, or try the scramble/solve buttons. The cube tracks your moves and can walk you through a solve step-by-step.</div>
-            <div class="rubik-controls">
-              <div style="font-size:11px;font-family:'Space Mono',monospace;color:var(--text3);margin-bottom:4px;letter-spacing:2px">FACE ROTATIONS</div>
-              <div class="rb-btn-row" id="rb-btn-row"></div>
-              <div style="display:flex;gap:8px;margin-top:8px">
-                <button class="rb-btn hoverable" onclick="scrambleCube()" style="flex:1;border-color:rgba(163,230,53,.3);color:var(--lime)">⚡ Scramble</button>
-                <button class="rb-btn hoverable" onclick="resetCubeState()" style="flex:1">↺ Reset</button>
-              </div>
-              <div id="rb-status"></div>
-              <div id="rb-moves" style="opacity:.5"></div>
-            </div>
-            <div class="rb-legend" style="margin-top:1.5rem">
-              <div class="rb-leg-item"><div class="rb-leg-sq" style="background:#fff"></div><span>White (U)</span></div>
-              <div class="rb-leg-item"><div class="rb-leg-sq" style="background:#ef4444"></div><span>Red (R)</span></div>
-              <div class="rb-leg-item"><div class="rb-leg-sq" style="background:#3b82f6"></div><span>Blue (L)</span></div>
-              <div class="rb-leg-item"><div class="rb-leg-sq" style="background:#f97316"></div><span>Orange (F)</span></div>
-              <div class="rb-leg-item"><div class="rb-leg-sq" style="background:#22c55e"></div><span>Green (B)</span></div>
-              <div class="rb-leg-item"><div class="rb-leg-sq" style="background:#facc15"></div><span>Yellow (D)</span></div>
+      <!-- STATIC SKILLS SHOWCASE SECTION -->
+      <section class="static-section" id="skills-sec">
+        <div class="sec-header">
+          <span class="sec-label">NEURAL STACK</span>
+          <h2 class="sec-title">Architectures & Tech Stack</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-category">
+            <h4>🧠 Deep Learning Core</h4>
+            <div class="sc-tags">
+              <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>CUDA Blocks</span>
             </div>
           </div>
-          <div class="rb-canvas-wrap">
-            <canvas id="rb-canvas" width="260" height="260"></canvas>
+          <div class="skills-category">
+            <h4>👁 Computer Vision</h4>
+            <div class="sc-tags">
+              <span>YOLOv8</span><span>OpenCV</span><span>Segmentation</span><span>ONNX Edge</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h4>⛓ NLP & Agents</h4>
+            <div class="sc-tags">
+              <span>LangChain</span><span>FAISS Vector</span><span>LLM Tuning</span><span>Redis Cache</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h4>🐳 MLOps & Systems</h4>
+            <div class="sc-tags">
+              <span>Docker</span><span>FastAPI Services</span><span>PostgreSQL</span><span>Git CI/CD</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="divider"></div>
-
-    <!-- Contact & Pitch Section -->
-    <section id="contact" style="position:relative;z-index:1;padding:7rem 2rem">
-      <div class="contact-inner reveal">
-        <div class="s-label" style="text-align:center">let's build</div>
-        <h2 class="s-title" style="text-align:center">Got an <span class="grad">interesting problem?</span></h2>
-        <p style="text-align:center;color:var(--text2);font-size:15px;font-weight:300;margin-bottom:0">I'm most excited by things that seem impossible until you break them down.</p>
-        <div class="contact-card-big">
-          <div class="contact-avt">AM</div>
-          <div class="contact-name">Akash Mehra</div>
-          <div class="contact-role">AI / ML ENGINEER · BUILDER</div>
-          <div class="contact-links">
-            <div class="clink hoverable" onclick="window.location.href='mailto:akash.mehra@email.com'">
-              <div class="clink-icon" style="background:rgba(34,211,238,.1);color:var(--cyan)">✉</div>
-              <div class="clink-text"><div class="clink-label">EMAIL</div><div class="clink-val">akash.mehra@email.com</div></div>
-              <div class="clink-action">→</div>
-            </div>
-            <div class="clink hoverable" onclick="window.location.href='tel:+919876543210'">
-              <div class="clink-icon" style="background:rgba(167,139,250,.1);color:var(--v)">📱</div>
-              <div class="clink-text"><div class="clink-label">MOBILE</div><div class="clink-val">+91 98765 43210</div></div>
-              <div class="clink-action">→</div>
-            </div>
-            <div class="clink hoverable" onclick="window.open('https://linkedin.com/in/akashmehra','_blank')">
-              <div class="clink-icon" style="background:rgba(163,230,53,.1);color:var(--lime)">in</div>
-              <div class="clink-text"><div class="clink-label">LINKEDIN</div><div class="clink-val">linkedin.com/in/akashmehra</div></div>
-              <div class="clink-action">→</div>
-            </div>
-            <div class="clink hoverable" onclick="window.open('https://github.com/akashmehra','_blank')">
-              <div class="clink-icon" style="background:rgba(251,191,36,.1);color:var(--amber)">GH</div>
-              <div class="clink-text"><div class="clink-label">GITHUB</div><div class="clink-val">github.com/akashmehra</div></div>
-              <div class="clink-action">→</div>
-            </div>
+      <!-- PROFESSIONAL FOOTER SECTION -->
+      <footer class="footer-sec">
+        <div class="footer-grid">
+          <div class="fg-brand">
+            <h3>A<span>M</span>.core</h3>
+            <p>"Chaos creates ideas. Discipline ships them."</p>
           </div>
-          <button class="cv-btn hoverable">⬇ Download Resume / CV</button>
+          <div class="fg-links">
+            <h4>NEURAL PATHS</h4>
+            <a href="#interactive-space" class="hoverable">Top Mind Space</a>
+            <a href="#projects-sec" class="hoverable">Static Projects</a>
+            <a href="#skills-sec" class="hoverable">Static Skills</a>
+          </div>
+          <div class="fg-links">
+            <h4>SYSTEM PORTS</h4>
+            <a href="https://github.com" target="_blank" class="hoverable">GitHub Node</a>
+            <a href="https://linkedin.com" target="_blank" class="hoverable">LinkedIn Link</a>
+            <a href="mailto:akash.mehra@email.com" class="hoverable">Mail Channel</a>
+          </div>
+          <div class="fg-links fg-cv-col">
+            <h4>CURRICULUM VITAE</h4>
+            <a href="#" class="btn-cv-download hoverable" onclick="runTermCommand('connect'); return false;">
+              <span>📄 Download CV</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 AKASH MEHRA · EVERY PIXEL CALCULATED · ALL CHANNELS OPERATIONAL
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- CASE STUDY MODAL -->
+  <div class="modal-overlay" id="case-study-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="mh-info">
+          <h4 id="modal-category">CASE STUDY</h4>
+          <h2 id="modal-title">Project Title</h2>
+        </div>
+        <button class="modal-close" onclick="closeCaseStudy()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-section">
+          <h3>The Problem</h3>
+          <p id="modal-problem">Details about the challenge...</p>
+        </div>
+        <div class="mb-section">
+          <h3>Core Architecture</h3>
+          <p id="modal-architecture">Detailed pipeline...</p>
+        </div>
+        <div class="mb-section">
+          <h3>Technology Stack</h3>
+          <div class="mb-tags" id="modal-tags">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+        <div class="mb-section">
+          <h3>Key Metrics</h3>
+          <div class="mb-grid" id="modal-metrics">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+        <div class="mb-section" id="modal-features-wrap" style="display:none">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="mb-section">
+          <h3>Lessons Learned</h3>
+          <p id="modal-lessons">Lessons and take-aways...</p>
+        </div>
+        <div class="mb-section mb-links">
+          <a href="#" class="mb-link-btn primary" id="modal-live-link" target="_blank">Launch Live Demo</a>
+          <a href="#" class="mb-link-btn secondary" id="modal-git-link" target="_blank">View GitHub</a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
-  <!-- Sticky Footer -->
-  <footer>AKASH MEHRA · BUILT WITH OBSESSION · 2026 · EVERY PIXEL INTENTIONAL</footer>
-
-  <!-- Chatbot FAB overlay and dialog box layout -->
+  <!-- AI TWIN ASSISTANT FLOATING WIDGET -->
   <div id="ai-wrap">
     <div class="ai-chat-box" id="ai-box">
       <div class="acb-header">
         <div class="acb-av">🤖</div>
-        <div>
+        <div style="flex: 1; min-width: 0;">
           <div class="acb-name">AkashAI</div>
-          <div class="acb-status">● thinking in parallel</div>
+          <div class="acb-status" id="acb-status">● professional mode</div>
         </div>
-        <button class="acb-close" onclick="openAI()" aria-label="Close AI chatbot dialog">✕</button>
+        <button class="acb-sound-btn hoverable" id="acb-sound-btn" onclick="toggleAISound()" title="Toggle voice telemetry sounds">🔊</button>
+        <button class="acb-close" onclick="openAI()">✕</button>
       </div>
+
+      <!-- Neural Waveform Visualizer -->
+      <div class="acb-wave-container">
+        <canvas id="chatbot-wave-canvas"></canvas>
+      </div>
+      
+      <!-- Mood Persona Selectors -->
+      <div class="acb-personas">
+        <button class="acb-p-btn active hoverable" onclick="setPersona('professional', this)">💼 Job</button>
+        <button class="acb-p-btn hoverable" onclick="setPersona('adhd', this)">🧠 Chaos</button>
+        <button class="acb-p-btn hoverable" onclick="setPersona('caffeinated', this)">☕ Dev</button>
+        <button class="acb-p-btn hoverable" onclick="setPersona('chess', this)">♟ Play</button>
+      </div>
+
       <div class="acb-msgs" id="ai-msgs">
-        <div class="acb-msg bot">Hey! I'm Akash's AI twin — trained on his mind, projects, and questionable coffee habits. Ask me literally anything. ☕</div>
+        <div class="acb-msg bot" id="ai-welcome-msg">Hey! I'm Akash's AI twin. Choose my active neural state above and ask me anything about his work, skills, or sports. ☕</div>
       </div>
       <div class="acb-quick" id="ai-quick"></div>
       <div class="acb-input-row">
@@ -282,14 +295,10 @@
   <!-- JavaScript Modules (Loaded sequentially) -->
   <script src="js/main.js"></script>
   <script src="js/background.js"></script>
-  <script src="js/hero-adhd.js"></script>
-  <script src="js/mind-map.js"></script>
-  <script src="js/skills.js"></script>
-  <script src="js/projects.js"></script>
-  <script src="js/coffee.js"></script>
-  <script src="js/chess.js"></script>
-  <script src="js/rubik.js"></script>
+  <script src="js/brain-canvas.js"></script>
+  <script src="js/mind-universe.js"></script>
   <script src="js/chatbot.js"></script>
+  <script src="js/terminal.js"></script>
 
 </body>
 </html>
