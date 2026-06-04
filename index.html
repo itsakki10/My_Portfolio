@@ -9,11 +9,29 @@
   <meta name="description" content="Journey through the neural mind of Akash Mehra, AI/ML Engineer and Builder. Explore interactive projects, skills network, and developmental timelines.">
   <meta name="keywords" content="Akash Mehra, AI Engineer, ML Developer, Deep Learning, Computer Vision, MLOps, Holographic Portfolio">
   <meta name="author" content="Akash Mehra">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:title" content="Akash Mehra | AI/ML Engineer & Builder Mindspace">
+  <meta property="og:description" content="Journey through the neural mind of Akash Mehra, AI/ML Engineer and Builder. Explore interactive projects, skills network, and developmental timelines.">
+  <meta property="og:image" content="https://yourdomain.com/preview-social.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://yourdomain.com/">
+  <meta property="twitter:title" content="Akash Mehra | AI/ML Engineer & Builder Mindspace">
+  <meta property="twitter:description" content="Journey through the neural mind of Akash Mehra, AI/ML Engineer and Builder. Explore interactive projects, skills network, and developmental timelines.">
+  <meta property="twitter:image" content="https://yourdomain.com/preview-social.png">
   
   <!-- Fonts Preconnection -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>🧠</text></svg>">
+
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,19 +41,20 @@
   <div id="cur" aria-hidden="true"></div>
   <div id="cur-ring" aria-hidden="true"></div>
 
-  <!-- Futuristic Neural Preloader -->
+  <!-- Minimalist Kanji Preloader -->
   <div id="preloader">
     <div class="preloader-content">
-      <div class="preloader-title">AM.core // Synaptic Link</div>
-      <div class="preloader-spinner-box">
-        <svg class="preloader-ring" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" stroke="rgba(251, 191, 36, 0.08)" stroke-width="4" fill="none" />
-          <circle class="preloader-ring-fill" id="preloader-ring-fill" cx="50" cy="50" r="40" stroke="var(--amber)" stroke-width="4" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" />
-        </svg>
-        <div class="preloader-percent" id="preloader-percent">0%</div>
+      <div class="preloader-kanji">心</div>
+      <div class="preloader-hud-sub">AM.コア // システム起動</div>
+      
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="preloader-progress"></div>
       </div>
-      <div class="preloader-logs" id="preloader-logs">
-        <div class="preloader-log-line">Initializing neural hardware...</div>
+      
+      <div class="preloader-stats">
+        <span class="stat-percent" id="preloader-percent">00%</span>
+        <span class="stat-divider">//</span>
+        <span class="stat-status" id="preloader-status-text">INITIALIZING...</span>
       </div>
     </div>
   </div>
@@ -55,15 +74,15 @@
     <canvas id="brain-canvas"></canvas>
     
     <div class="opening-banner">
-      <div class="ob-label">neural core initialized</div>
+      <div class="ob-label">AKASH MEHRA // アカシュ・メーラ</div>
       <h1 class="ob-title">
-        <span>WELCOME TO MY BRAIN</span>
+        <span>WELCOME</span>
       </h1>
       <p class="ob-subtitle">
-        AI / ML Engineer · Builder · Competitive Thinker.<br>
-        Powered by curiosity, caffeine, and obsessive execution.
+        I am an AI / ML Engineer, Builder, and Competitive Thinker.<br>
+        Step into my mind core to explore custom neural networks, agentic systems, and shogi calculations.
       </p>
-      <button class="btn-enter hoverable" onclick="enterMind()">Enter My Mind</button>
+      <button class="btn-enter hoverable" onclick="enterMind()">Enter My Mind [起動]</button>
     </div>
   </section>
 
@@ -71,14 +90,15 @@
   <section class="screen-sec hidden" id="universe-sec">
     <!-- Sticky Control Header -->
     <header class="uni-header">
-      <div class="uni-logo" onclick="resetToOpening()">A<span>M</span>.core</div>
+      <div class="uni-logo" onclick="resetToOpening()">A<span>M</span>.コア</div>
       
       <!-- Redirect Navigation Links -->
       <nav class="uni-nav">
-        <a class="hoverable" onclick="scrollToSection('interactive-space')">Mind Core</a>
-        <a class="hoverable" onclick="scrollToSection('terminal-sec')">Console</a>
-        <a class="hoverable" onclick="scrollToSection('projects-sec')">Projects</a>
-        <a class="hoverable" onclick="scrollToSection('skills-sec')">Skills</a>
+        <a class="hoverable" onclick="scrollToSection('interactive-space')">Mind Core <span class="nav-sub">マインド</span></a>
+        <a class="hoverable" onclick="scrollToSection('terminal-sec')">Console <span class="nav-sub">コンソール</span></a>
+        <a class="hoverable" onclick="scrollToSection('projects-sec')">Projects <span class="nav-sub">プロジェクト</span></a>
+        <a class="hoverable" onclick="scrollToSection('skills-sec')">Skills <span class="nav-sub">スキル</span></a>
+        <a class="hoverable" onclick="scrollToSection('education-sec')">Education <span class="nav-sub">教育</span></a>
       </nav>
 
       <div class="uni-actions">
@@ -86,6 +106,7 @@
           <div class="caffeine-dot"></div>
           <span id="caffeine-txt">Caffeine: Normal</span>
         </div>
+        <button class="theme-toggle hoverable" id="theme-btn" onclick="toggleTheme()" title="Toggle Neural Theme">🌸</button>
         <button class="btn-focus hoverable" id="focus-btn" onclick="toggleFocusMode()">Focus Mode</button>
       </div>
     </header>
@@ -115,7 +136,7 @@
             <div class="term-output">Type 'help' to check available commands.</div>
             <div class="term-input-line">
               <span class="term-prompt">guest@mind:~$</span>
-              <input type="text" class="term-input" id="term-input" autocomplete="off" spellcheck="false" autofocus>
+              <input type="text" class="term-input" id="term-input" autocomplete="off" spellcheck="false" autofocus aria-label="Developer console command input">
             </div>
           </div>
           <div class="term-actions-bar">
@@ -130,7 +151,7 @@
       <!-- STATIC PROJECTS SHOWCASE SECTION -->
       <section class="static-section" id="projects-sec">
         <div class="sec-header">
-          <span class="sec-label">PRODUCTIONS</span>
+          <span class="sec-label">PRODUCTIONS <span class="manga-sound-badge">ゴゴゴ</span></span>
           <h2 class="sec-title">Core Systems Portfolio</h2>
         </div>
         <div class="projects-grid" id="projects-grid">
@@ -141,32 +162,101 @@
       <!-- STATIC SKILLS SHOWCASE SECTION -->
       <section class="static-section" id="skills-sec">
         <div class="sec-header">
-          <span class="sec-label">NEURAL STACK</span>
+          <span class="sec-label">NEURAL STACK <span class="manga-sound-badge">ドドド</span></span>
           <h2 class="sec-title">Architectures & Tech Stack</h2>
         </div>
         <div class="skills-grid">
-          <div class="skills-category">
-            <h4>🧠 Deep Learning Core</h4>
-            <div class="sc-tags">
-              <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>CUDA Blocks</span>
+          <!-- Card 1 -->
+          <div class="skills-card">
+            <div class="sc-card-header">
+              <span class="sc-card-icon">🧠</span>
+              <h4>Deep Learning Core</h4>
+              <span class="sc-card-percent">95%</span>
+            </div>
+            <div class="sc-card-meter">
+              <div class="sc-card-meter-fill" style="width: 95%"></div>
+            </div>
+            <p class="sc-card-desc">Training, optimizing, and deploying deep neural networks and custom PyTorch architectures.</p>
+            <div class="sc-card-tags">
+              <span>🐍 Python</span><span>🔥 PyTorch</span><span>🤖 TensorFlow</span><span>⚡ CUDA Blocks</span>
             </div>
           </div>
-          <div class="skills-category">
-            <h4>👁 Computer Vision</h4>
-            <div class="sc-tags">
-              <span>YOLOv8</span><span>OpenCV</span><span>Segmentation</span><span>ONNX Edge</span>
+
+          <!-- Card 2 -->
+          <div class="skills-card">
+            <div class="sc-card-header">
+              <span class="sc-card-icon">👁</span>
+              <h4>Computer Vision</h4>
+              <span class="sc-card-percent">90%</span>
+            </div>
+            <div class="sc-card-meter">
+              <div class="sc-card-meter-fill" style="width: 90%"></div>
+            </div>
+            <p class="sc-card-desc">Real-time object detection, segmentation pipelines, and optimized edge runtimes.</p>
+            <div class="sc-card-tags">
+              <span>👁 YOLOv8</span><span>📷 OpenCV</span><span>🧩 Segmentation</span><span>🚀 ONNX Edge</span>
             </div>
           </div>
-          <div class="skills-category">
-            <h4>⛓ NLP & Agents</h4>
-            <div class="sc-tags">
-              <span>LangChain</span><span>FAISS Vector</span><span>LLM Tuning</span><span>Redis Cache</span>
+
+          <!-- Card 3 -->
+          <div class="skills-card">
+            <div class="sc-card-header">
+              <span class="sc-card-icon">⛓</span>
+              <h4>NLP & Agents</h4>
+              <span class="sc-card-percent">85%</span>
+            </div>
+            <div class="sc-card-meter">
+              <div class="sc-card-meter-fill" style="width: 85%"></div>
+            </div>
+            <p class="sc-card-desc">Building retrieval-augmented generation (RAG) loops and autonomous reasoning agents.</p>
+            <div class="sc-card-tags">
+              <span>⛓ LangChain</span><span>🗂 FAISS Vector</span><span>🧠 LLM Tuning</span><span>⚡ LangGraph</span>
             </div>
           </div>
-          <div class="skills-category">
-            <h4>🐳 MLOps & Systems</h4>
-            <div class="sc-tags">
-              <span>Docker</span><span>FastAPI Services</span><span>PostgreSQL</span><span>Git CI/CD</span>
+
+          <!-- Card 4 -->
+          <div class="skills-card">
+            <div class="sc-card-header">
+              <span class="sc-card-icon">🐳</span>
+              <h4>MLOps & Systems</h4>
+              <span class="sc-card-percent">80%</span>
+            </div>
+            <div class="sc-card-meter">
+              <div class="sc-card-meter-fill" style="width: 80%"></div>
+            </div>
+            <p class="sc-card-desc">Containerization, cloud databases, and automated testing for machine learning pipelines.</p>
+            <div class="sc-card-tags">
+              <span>🐳 Docker</span><span>⚡ FastAPI</span><span>🗃 PostgreSQL</span><span>🚀 Git CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATIC EDUCATION SECTION -->
+      <section class="static-section" id="education-sec">
+        <div class="sec-header">
+          <span class="sec-label">DEVELOPMENT PATH <span class="manga-sound-badge">シャキーン</span></span>
+          <h2 class="sec-title">Academic & Certifications</h2>
+        </div>
+        <div class="education-grid">
+          <div class="education-card">
+            <div class="ed-header">
+              <span class="ed-icon">🎓</span>
+              <div class="ed-title-block">
+                <h4>Bachelor of Technology in Computer Science & Engineering</h4>
+                <p class="ed-institute">Delhi Technological University</p>
+              </div>
+              <span class="ed-period">2021 — 2025</span>
+            </div>
+            <p class="ed-desc">Specialized in Artificial Intelligence & Machine Learning. Maintained deep focus on advanced neural architectures, backpropagation mathematics, algorithms design, and distributed computing models.</p>
+            <div class="ed-courses">
+              <h5>Key Coursework</h5>
+              <div class="ed-course-tags">
+                <span>Deep Learning Networks</span>
+                <span>Natural Language Processing</span>
+                <span>Computer Vision Systems</span>
+                <span>Algorithms & Complexity</span>
+              </div>
             </div>
           </div>
         </div>
@@ -176,14 +266,15 @@
       <footer class="footer-sec">
         <div class="footer-grid">
           <div class="fg-brand">
-            <h3>A<span>M</span>.core</h3>
-            <p>"Chaos creates ideas. Discipline ships them."</p>
+            <h3>A<span>M</span>.コア</h3>
+            <p>"Chaos creates ideas. Discipline ships them." // 規律が生み出す</p>
           </div>
           <div class="fg-links">
             <h4>NEURAL PATHS</h4>
             <a href="#interactive-space" class="hoverable">Top Mind Space</a>
             <a href="#projects-sec" class="hoverable">Static Projects</a>
             <a href="#skills-sec" class="hoverable">Static Skills</a>
+            <a href="#education-sec" class="hoverable">Static Education</a>
           </div>
           <div class="fg-links">
             <h4>SYSTEM PORTS</h4>
@@ -258,7 +349,7 @@
         <div class="acb-av">🤖</div>
         <div style="flex: 1; min-width: 0;">
           <div class="acb-name">AkashAI</div>
-          <div class="acb-status" id="acb-status">● professional mode</div>
+          <div class="acb-status" id="acb-status">● synaptic link online</div>
         </div>
         <button class="acb-sound-btn hoverable" id="acb-sound-btn" onclick="toggleAISound()" title="Toggle voice telemetry sounds">🔊</button>
         <button class="acb-close" onclick="openAI()">✕</button>
@@ -268,17 +359,9 @@
       <div class="acb-wave-container">
         <canvas id="chatbot-wave-canvas"></canvas>
       </div>
-      
-      <!-- Mood Persona Selectors -->
-      <div class="acb-personas">
-        <button class="acb-p-btn active hoverable" onclick="setPersona('professional', this)">💼 Job</button>
-        <button class="acb-p-btn hoverable" onclick="setPersona('adhd', this)">🧠 Chaos</button>
-        <button class="acb-p-btn hoverable" onclick="setPersona('caffeinated', this)">☕ Dev</button>
-        <button class="acb-p-btn hoverable" onclick="setPersona('chess', this)">♟ Play</button>
-      </div>
 
       <div class="acb-msgs" id="ai-msgs">
-        <div class="acb-msg bot" id="ai-welcome-msg">Hey! I'm Akash's AI twin. Choose my active neural state above and ask me anything about his work, skills, or sports. ☕</div>
+        <div class="acb-msg bot" id="ai-welcome-msg">ようこそ (Welcome)! I am Akash's AI twin (AM.コア). Ask me about his machine learning pipelines, DTU training log, Chess & Shogi strategies, or classic cyber-manga architectural inspirations! 🌸</div>
       </div>
       <div class="acb-quick" id="ai-quick"></div>
       <div class="acb-input-row">

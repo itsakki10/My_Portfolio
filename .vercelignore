@@ -1,0 +1,2 @@
+# Ignore Python requirements file to prevent Vercel from misdetecting this as a Python project.
+requirements.txt

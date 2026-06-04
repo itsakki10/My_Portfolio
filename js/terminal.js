@@ -10,7 +10,7 @@
 
   let commandHistory = [];
   let historyIndex = -1;
-  const availableCmds = ['help', 'connect', 'skills', 'focus', 'coffee', 'clear', 'system', 'diagnostics', 'chess', 'rubik', 'matrix'];
+  const availableCmds = ['help', 'connect', 'skills', 'focus', 'coffee', 'clear', 'system', 'diagnostics', 'chess', 'shogi', 'rubik', 'matrix', 'anime', 'manga', 'github'];
 
   // Simple HTML escaping helper
   function escapeHtml(str) {
@@ -51,7 +51,7 @@
   }
 
   // Global command executor function
-  window.runTermCommand = function(inputStr) {
+  window.runTermCommand = async function(inputStr) {
     const trimmed = inputStr.trim();
     if (!trimmed) return;
 
@@ -78,9 +78,12 @@
           `  <span style="color: var(--amber)">focus</span>       - Toggle Focus/Chaos physics layout mode.\n` +
           `  <span style="color: var(--amber)">coffee</span>      - Overclock canvas vector speeds.\n` +
           `  <span style="color: var(--amber)">system</span>      - Run model diagnostics & core telemetry.\n` +
+          `  <span style="color: var(--amber)">github</span>      - Query dynamic live GitHub user telemetry.\n` +
           `  <span style="color: var(--amber)">chess</span>       - Print strategic chess position board.\n` +
+          `  <span style="color: var(--amber)">shogi</span>       - Print strategic Japanese shogi board.\n` +
           `  <span style="color: var(--amber)">rubik</span>       - Renders a flattened unfolded Rubik's cube.\n` +
           `  <span style="color: var(--amber)">matrix</span>      - Trigger digital code rain simulation.\n` +
+          `  <span style="color: var(--amber)">anime</span>       - Fetch classic cyber-manga terminal telemetry.\n` +
           `  <span style="color: var(--amber)">clear</span>       - Purge terminal stdout buffer.` +
           `</pre>`,
           true
@@ -198,6 +201,45 @@
         );
         break;
 
+      case 'shogi':
+        printOutput(
+          `<pre style="font-family: inherit; margin: 0; color: var(--amber); line-height: 1.25;">` +
+          `   9   8   7   6   5   4   3   2   1\n` +
+          ` 1 [香] [桂] [銀] [金] [王] [金] [銀] [桂] [香] 1\n` +
+          ` 2 [  ] [飛] [  ] [  ] [  ] [  ] [  ] [角] [  ] 2\n` +
+          ` 3 [歩] [歩] [歩] [歩] [歩] [歩] [歩] [歩] [歩] 3\n` +
+          ` 4 [  ] [  ] [  ] [  ] [  ] [  ] [  ] [  ] [  ] 4\n` +
+          ` 5 [  ] [  ] [  ] [  ] [  ] [  ] [  ] [  ] [  ] 5\n` +
+          ` 6 [  ] [  ] [  ] [  ] [  ] [  ] [  ] [  ] [  ] 6\n` +
+          ` 7 [歩] [歩] [歩] [歩] [歩] [歩] [歩] [歩] [歩] 7\n` +
+          ` 8 [  ] [角] [  ] [  ] [  ] [  ] [  ] [飛] [  ] 8\n` +
+          ` 9 [香] [桂] [銀] [金] [玉] [金] [銀] [桂] [香] 9\n` +
+          `   9   8   7   6   5   4   3   2   1\n\n` +
+          `<span style="color:var(--text2);font-style:italic">"将棋 (Shogi): Every captured piece is a potential resource waiting to be dropped. Recycle your buffers."</span>` +
+          `</pre>`,
+          true
+        );
+        break;
+
+      case 'anime':
+      case 'manga':
+        printOutput(
+          `<pre style="font-family: inherit; margin: 0; color: var(--cyan); line-height: 1.35;">` +
+          `[NEURAL RETRIEVAL] Akira & Ghost in the Shell archives loaded:\n` +
+          `--------------------------------------------------\n` +
+          `"The Net is vast and infinite..." — Puppet Master (GITS)\n` +
+          `"My brain cells are connected to the network, processing\n` +
+          ` millions of computations. Code is just another medium."\n` +
+          `--------------------------------------------------\n` +
+          `   \\    /\\  \n` +
+          `    )  ( ')   [ AM.コア System Core Active ]\n` +
+          `   (  /  )    Neo-Tokyo Sub-routines Synced.\n` +
+          `    \\(__)|    Sketchbook Ink Engine Engaged.\n` +
+          `</pre>`,
+          true
+        );
+        break;
+
       case 'rubik':
         printOutput(
           `<pre style="font-family: inherit; margin: 0; color: var(--amber); line-height: 1.2;">` +
@@ -233,6 +275,38 @@
           printOutput(`<span style="color:#22c55e;font-family:monospace;letter-spacing:2px;">${line}</span>`, true);
           count++;
         }, 150);
+        break;
+
+      case 'github':
+        const username = args[1] || 'akashmehra';
+        printOutput(`<span style="color: var(--cyan)">[NET] Querying GitHub API socket for '${escapeHtml(username)}'...</span>`, true);
+        try {
+          const res = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`);
+          if (!res.ok) {
+            throw new Error(`User not found or rate limited (status ${res.status})`);
+          }
+          const userData = await res.json();
+          const createdDate = new Date(userData.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+          printOutput(
+            `<pre style="font-family: inherit; margin: 0; color: var(--lime); line-height: 1.45;">` +
+            `================== GITHUB DATA PORT ==================\n` +
+            `• User Profile:   ${userData.login} (${userData.name || 'N/A'})\n` +
+            `• Bio:            ${userData.bio || 'No bio set.'}\n` +
+            `• Public Repos:   ${userData.public_repos}\n` +
+            `• Followers:      ${userData.followers} / Following: ${userData.following}\n` +
+            `• Account Created: ${createdDate}\n` +
+            `• Location:       ${userData.location || 'N/A'}\n` +
+            `• Git URL:        <a href="${userData.html_url}" target="_blank" style="color: var(--amber); text-decoration: none;">${userData.html_url}</a>\n` +
+            `======================================================` +
+            `</pre>`,
+            true
+          );
+          if (window.unlockAchievement) {
+            window.unlockAchievement('github_sync', '🐙 GitHub Live Telemetry Synced!');
+          }
+        } catch (err) {
+          printOutput(`[ERROR] Failed to fetch GitHub socket: ${err.message}`, false);
+        }
         break;
 
       case 'clear':
@@ -303,7 +377,7 @@
   }
 
   // Bind input listeners
-  document.addEventListener('DOMContentLoaded', () => {
+  function initTerminal() {
     const inputEl = document.getElementById('term-input');
     if (inputEl) {
       bindKeyListeners(inputEl);
@@ -315,18 +389,12 @@
         });
       }
     }
-  });
+  }
 
-  // Fallback binding if DOM loaded already
-  const inputEl = document.getElementById('term-input');
-  if (inputEl) {
-    bindKeyListeners(inputEl);
-    const termContainer = document.querySelector('.term-container');
-    if (termContainer) {
-      termContainer.addEventListener('click', () => {
-        inputEl.focus();
-      });
-    }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initTerminal();
+  } else {
+    document.addEventListener('DOMContentLoaded', initTerminal);
   }
 
 })();

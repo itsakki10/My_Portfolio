@@ -365,10 +365,12 @@
       // Define different colors and layouts based on index/category
       let badge = '';
       let highlightBox = '';
+      let hankoKanji = '';
 
       if (p.num === '01') {
         // CV - highlights Edge FPS
         badge = `<span class="sc-badge cv-badge">EDGE INF</span>`;
+        hankoKanji = '極'; // Kiwami - Limit/Extreme (for high performance)
         highlightBox = `
           <div class="sc-inline-metric">
             <span class="sc-im-val">120 FPS</span>
@@ -377,6 +379,7 @@
       } else if (p.num === '02') {
         // Diffusion - highlights SDXL
         badge = `<span class="sc-badge genai-badge">DIFFUSION</span>`;
+        hankoKanji = '創'; // So - Create (for Diffusion)
         highlightBox = `
           <div class="sc-inline-metric">
             <span class="sc-im-val">SDXL</span>
@@ -385,6 +388,7 @@
       } else if (p.num === '03') {
         // AI Agents - highlights retrieval flowchart
         badge = `<span class="sc-badge agent-badge">LLM AGENT</span>`;
+        hankoKanji = '知'; // Chi - Wisdom/Knowledge (for Agent/RAG)
         highlightBox = `
           <div class="sc-flow-path">
             <span>BM25</span> → <span>FAISS</span> → <span>LLM</span>
@@ -392,6 +396,7 @@
       } else if (p.num === '04') {
         // SecureML - no metrics, shows security checklist
         badge = `<span class="sc-badge secure-badge">SECURE SYSTEMS</span>`;
+        hankoKanji = '密'; // Mitsu - Secret/Dense (for secure enclaves)
         highlightBox = `
           <div class="sc-feature-list-mini">
             <div>🛡 AES-256 Enclave RAM</div>
@@ -400,6 +405,7 @@
       } else if (p.num === '05') {
         // Scheduler - user metrics
         badge = `<span class="sc-badge productivity-badge">SCHEDULER</span>`;
+        hankoKanji = '律'; // Ritsu - Law/Discipline (for Scheduler)
         highlightBox = `
           <div class="sc-inline-metric">
             <span class="sc-im-val">1.5k+</span>
@@ -408,6 +414,7 @@
       }
 
       card.innerHTML = `
+        <div class="hanko-stamp">${hankoKanji}</div>
         <div class="sc-header-row">
           <span class="sc-meta">${p.category}</span>
           ${badge}

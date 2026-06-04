@@ -1,0 +1,17 @@
+# Local secrets
+.env
+.env.local
+.env.*.local
+
+# Vercel cache
+.vercel
+
+# Node dependencies
+node_modules/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+.vercel
+.env*

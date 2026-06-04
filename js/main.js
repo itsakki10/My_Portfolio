@@ -27,18 +27,18 @@ window.addEventListener('DOMContentLoaded', () => {
 function runPreloader() {
   const preloader = $('preloader');
   const percentEl = $('preloader-percent');
-  const ringFill = $('preloader-ring-fill');
-  const logsEl = $('preloader-logs');
+  const progressFill = $('preloader-progress');
+  const statusEl = $('preloader-status-text');
 
-  if (!preloader || !percentEl || !ringFill || !logsEl) return;
+  if (!preloader || !percentEl || !progressFill || !statusEl) return;
 
   const logs = [
-    "[ SYSTEM ] Initializing caffeine thread...",
-    "[ SYSTEM ] Allocating GPU VRAM blocks (CUDA 12.1)...",
-    "[ SYSTEM ] Quantizing core YOLOv8 weights to FP16...",
-    "[ SYSTEM ] Loading 1800 ELO chess evaluation matrices...",
-    "[ SYSTEM ] Mapping ADHD hyperfocus parameters...",
-    "[ SYSTEM ] Synapses connected. Initializing link."
+    "マインドコアスレッド初期化中...",
+    "GPU VRAM割り当て中 (CUDA 12.1)...",
+    "YOLOv8 ネットワーク量子化中...",
+    "将棋状態空間評価マトリクス読込中...",
+    "アニメフレーム補間エンジン起動...",
+    "システムオンライン。シナプスリンク接続。"
   ];
 
   let percent = 0;
@@ -47,7 +47,6 @@ function runPreloader() {
   const intervalTime = 20;
   const steps = totalDuration / intervalTime;
   const percentPerStep = 100 / steps;
-  const perimeter = 251.2;
 
   const preloaderInterval = setInterval(() => {
     percent += percentPerStep;
@@ -55,7 +54,8 @@ function runPreloader() {
       percent = 100;
       clearInterval(preloaderInterval);
       percentEl.textContent = "100%";
-      ringFill.setAttribute('stroke-dashoffset', '0');
+      progressFill.style.width = "100%";
+      statusEl.textContent = "システム起動完了。ようこそ。";
 
       setTimeout(() => {
         preloader.style.opacity = '0';
@@ -67,16 +67,11 @@ function runPreloader() {
     } else {
       const displayPercent = Math.floor(percent);
       percentEl.textContent = `${displayPercent}%`;
-      const offset = perimeter - (percent / 100) * perimeter;
-      ringFill.setAttribute('stroke-dashoffset', offset);
+      progressFill.style.width = `${displayPercent}%`;
 
       const expectedLogIndex = Math.floor((percent / 100) * logs.length);
       if (expectedLogIndex > logIndex && logIndex < logs.length) {
-        const line = document.createElement('div');
-        line.className = 'preloader-log-line';
-        line.textContent = logs[logIndex];
-        logsEl.appendChild(line);
-        logsEl.scrollTop = logsEl.scrollHeight;
+        statusEl.textContent = logs[logIndex];
         logIndex = expectedLogIndex;
       }
     }
@@ -244,5 +239,30 @@ window.scrollToSection = function(id) {
       top: el.offsetTop - 80, // Offset for sticky header
       behavior: 'smooth'
     });
+  }
+};
+
+// Setup theme toggle logic
+window.toggleTheme = function() {
+  const body = document.body;
+  const btn = $('theme-btn');
+  if (!body || !btn) return;
+
+  const isLight = body.classList.toggle('light-mode');
+  
+  // Rotate button
+  btn.classList.add('active');
+  setTimeout(() => btn.classList.remove('active'), 300);
+
+  // Swap icon
+  btn.textContent = isLight ? '🎨' : '🌸';
+
+  // Dispatch custom theme change event for canvas integrations
+  const themeEvent = new CustomEvent('themechanged', { detail: { isLightMode: isLight } });
+  window.dispatchEvent(themeEvent);
+
+  // Unlock achievement
+  if (window.unlockAchievement) {
+    window.unlockAchievement('theme_toggled', isLight ? '🎨 Manga Mode Activated!' : '🌸 Sakura Mode Restored!');
   }
 };
