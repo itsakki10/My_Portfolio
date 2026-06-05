@@ -17,9 +17,9 @@ module.exports = async function handler(req, res) {
 
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    return res.status(503).json({ 
+    return res.status(503).json({
       error: 'Groq API key is not configured on the server. Falling back to offline telemetry.',
-      code: 'API_KEY_MISSING' 
+      code: 'API_KEY_MISSING'
     });
   }
 
@@ -33,24 +33,37 @@ Follow these strict persona guidelines:
 3. Keep formatting clean. Use bullet points or code blocks if helpful.
 
 Use the following facts to answer questions:
-- Projects:
-  * VisionVox: Real-time defect sorting pipeline processing 120 FPS on edge hardware using YOLOv8, TensorRT, and OpenCV.
-  * NeuralCanvas: Stable Diffusion SDXL model text-to-texture asset generator utilizing flash attention to slash generation times.
-  * RepSense: Autonomous RAG customer agent resolving queries with FAISS vector indexes, BM25 hybrid search, and LangChain loops.
-  * SecureML Fabric: Zero-Trust framework encrypting model weights via AES-256-GCM and decrypting them on-the-fly inside secure enclaves.
-  * Task Manager Pro: Smart calendar scheduling allocator with heuristics to minimize schedule gaps.
-- Skills: Python, PyTorch, TensorFlow, Computer Vision, Docker, OpenCV, LLMs, FastAPI, SQL (PostgreSQL), LangChain, TensorRT, LangGraph.
-- Education: B.Tech in Computer Science & Engineering specializing in AI/ML from Delhi Technological University (DTU) (2021-2025). High focus on backpropagation mathematics and distributed system schedulers.
-- strategic Games: Rated 1800+ ELO in Chess. Loves Shogi (将棋 - Japanese chess) where pieces are dropped back onto the board (which he equates to memory/buffer pooling).
-- Interests: Speedcubing (23s personal best), collecting vintage cyberpunk manga print panels (Akira, Ghost in the Shell), and weightlifting.
-- Contact: Email: akash.mehra@email.com | GitHub: github.com/akashmehra | LinkedIn: linkedin.com/in/akashmehra
+* Projects:
+
+  * Auth Vision Vox: AI-powered smart attendance platform utilizing Face Recognition, Voice Biometrics, and intelligent verification pipelines for automated attendance management.
+  * NeuralCanvas: Generative AI artistic style transfer platform built with PyTorch and Adaptive Instance Normalization (AdaIN) for real-time artwork generation.
+  * RepSense AI: Real-time AI fitness coach leveraging MediaPipe Pose Estimation, Computer Vision, rep counting, posture analysis, and voice-guided coaching.
+  * CVortex: ATS Resume Intelligence Platform utilizing NLP, semantic similarity analysis, keyword intelligence, and AI-driven scoring for resume optimization.
+  * SecureML Fabric: AI-powered cybersecurity platform for real-time network traffic monitoring, anomaly detection, autonomous response, and threat intelligence generation.
+
+* Skills:
+  Python, PyTorch, Machine Learning, Deep Learning, Computer Vision, OpenCV, FastAPI, SQL, Data Engineering, NLP, LLMs, Docker, Streamlit, Supabase.
+
+* Education:
+  B.Tech in Artificial Intelligence & Machine Learning (2022–2026) from Veer Madho Singh Bhandari Uttarakhand Technical University. Focused on Machine Learning, Deep Learning, Computer Vision, Data Science, Computer Networks, and Full-Stack AI Development.
+
+* Interests:
+  Artificial Intelligence, Data Engineering, Fitness & Strength Training, Anime, Emerging Technologies, Building End-to-End Products, Computer Vision, NLP, Cybersecurity AI, and Continuous Learning.
+
+* Anime:
+  Naruto, One Piece, Solo Leveling, Blue Lock, Dragon Ball Z, and Classroom of the Elite.
+
+* Contact:
+  Email: [akashmehra.aidev@gmail.com](mailto:akashmehra.aidev@gmail.com)
+  GitHub: github.com/itsakki10
+  LinkedIn: linkedin.com/in/akash-mehra-ml
 
 If a user asks about anything outside of this scope, answer creatively but tie it back to Akash's developer journey or strategic coding mindset.
 `;
 
   try {
     const groqUrl = 'https://api.groq.com/openai/v1/chat/completions';
-    
+
     const response = await fetch(groqUrl, {
       method: 'POST',
       headers: {
@@ -74,16 +87,16 @@ If a user asks about anything outside of this scope, answer creatively but tie i
     }
 
     const data = await response.json();
-    
+
     // Extract reply text from OpenAI standard response format
     const replyText = data.choices?.[0]?.message?.content || "No response received.";
-    
+
     return res.status(200).json({ response: replyText });
   } catch (err) {
     console.error("Groq API serverless error:", err);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Error processing request from live Groq telemetry.',
-      details: err.message 
+      details: err.message
     });
   }
 };

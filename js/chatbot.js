@@ -2,7 +2,7 @@
  * Simplified AI Twin Chatbot (AkashAI) with theme-aware telemetry waveforms.
  */
 
-(function() {
+(function () {
   let aiOpen = false;
   let isAiThinking = false;
   let waveId = null;
@@ -18,36 +18,57 @@
 
   // Unified AkashAI Knowledge Database
   const aiKnowledge = {
-    projects: "Akash has deployed 3 core ML systems: Synapse RAG (indexing 10M+ files with sub-200ms query latency), Neural Chess/Shogi (MCTS RL self-play engine), and VisionSense (a YOLOv8 edge computer vision line replacing visual inspectors).",
-    projects_followup: "Deeper details: Synapse RAG uses FAISS with sparse BM25 retrieval. Neural Chess/Shogi uses policy-value ResNets quantized to FP16, and VisionSense utilizes TensorRT to process camera feeds at 120 FPS.",
-    skills: "Core technical stack: Python, PyTorch, LangChain, FAISS vector indexes, FastAPI services, Docker containerization, CUDA programming, and MLOps deployment pipelines.",
-    skills_followup: "His architectural focus is on low-latency inference. This includes custom CUDA kernel configurations, optimizing model weights via ONNX, and building secure enclave model decrypters.",
-    chess: "Akash is rated 1800+ ELO. He views Chess and Shogi (将棋 - Japanese chess) as direct mental models for system design — prioritizing deep tree evaluation, spatial coordinate control, and planning recursive moves ahead.",
-    chess_followup: "In Shogi, captured pieces can be dropped back onto the board (re-used). He equates this to memory pooling, buffer recycling, and efficient tensor allocation in neural compiler pipelines.",
-    coffee: "Consumes an average of 47 cups per month. It serves as a focused ritual between designing system architectures and shipping updates.",
-    coffee_followup: "He logs caffeine intake telemetry to correlate compile time with code quality. Cup 3 is statistically linked to major debugging sweeps.",
-    rubik: "Maintains a personal best of 23 seconds. The cube serves as a practical lesson in state-space decomposition and algorithmic pathfinding.",
-    rubik_followup: "Solving Rubik's cubes utilizes standard CFOP stages. In model architecture, solving sub-modules follows a similar pipeline of forced states.",
-    hire: "He is actively looking for AI/ML engineering roles where he can build and ship high-impact models. Contact: akash.mehra@email.com | +91 98765 43210.",
-    hire_followup: "He prefers fast-moving, ambitious development environments. He can coordinate end-to-end setups, from model training to secure enclaved production deployments.",
-    adhd: "Akash channels his high neural energy into building code rapidly, establishing strict engineering checklists to ensure focus translates directly to production results.",
-    adhd_followup: "Hyperfocus allows him to complete full architectural builds in single-session sprints, relying on automated unit tests to verify stability.",
-    sports: "He maintains a disciplined strength training regimen 5-6 days a week, channeling high-energy focus like Rock Lee's weight-drops to build endurance and cognitive buffer.",
-    sports_followup: "He views high-intensity training as the ultimate system diagnostic test — proving that consistency and mental toughness translate directly to debug sprints.",
-    education: "Akash holds a B.Tech in CSE specializing in AI and ML from Delhi Technological University, focusing on deep networks, calculus, backpropagation, and distributed scheduling algorithms.",
-    education_followup: "He supplemented his coursework with research in model optimization, custom enclaved decryption interfaces and fine-tuning YOLO-based segmentation models.",
-    location: "Akash is based in Delhi, India. He works and builds from here, deploying models to global cloud instances and edge terminals.",
-    location_followup: "Operating out of Delhi, he coordinates with distributed teams globally, syncing his compilation cycles with different timezone operational windows.",
-    hobbies: "Akash's interest matrices cover strategic games like competitive Chess and Shogi (将棋), collecting vintage cyber-manga print panels (Akira, Ghost in the Shell), speedcubing (23s personal best), and reviewing ML research papers over double-shot espresso.",
-    hobbies_followup: "He reads classic cyberpunk manga, drawing design inspiration from their clean, high-contrast, black-ink neobrutalist sketchbook layouts. He treats code as an art form akin to precise ink sketching.",
-    future: "He envisions a cyberpunk future reminiscent of Ghost in the Shell — featuring secure edge-AI execution enclaves, highly autonomous multi-agent networks, and real-time model compilation.",
-    future_followup: "Specifically, he is building neural compiler layers that encrypt weights in-transit and decrypt them inside secure enclaves on the fly, keeping user prompts fully private.",
-    friends: "He views peers and collaborators as cooperative node clusters. He believes that working with like-minded builders, chess partners, and athletic peers multiplies the speed of calculation and execution.",
-    friends_followup: "He values builders who challenge his system structures. Collaborating on fast hackathons and team code sprints represents his favorite environment to ship products.",
-    looking_for: "He is seeking AI/ML engineering, Deep Learning developer, or MLOps positions where he can build high-throughput model architectures, optimize inference latency, and deploy secure models.",
-    looking_for_followup: "He wants to join ambitious, high-discipline engineering teams that prioritize fast shipping speeds, clean codebase maintenance, and quantitative benchmark verification.",
-    default: "Greetings. I am Akash's AI Twin (AM.コア). Ask me about his ML production systems, DTU education, Shogi/Chess strategies, or his cyberpunk/anime-inspired software architecture."
+    projects: "Akash has built multiple AI-powered products including SecureML Fabric (cybersecurity threat detection), CVortex (ATS resume intelligence platform), RepSense AI (real-time AI gym coach), NeuralCanvas (generative AI style transfer), and Auth Vision Vox (face and voice-based smart attendance system).",
+
+    projects_followup: "His projects span Computer Vision, NLP, LLM integrations, Cybersecurity AI, Generative AI, and full-stack application development. He enjoys building end-to-end systems from data pipelines and model training to deployment and user experience.",
+
+    skills: "Core technical stack includes Python, Machine Learning, Deep Learning, PyTorch, OpenCV, FastAPI, SQL, Data Engineering, LLMs, Computer Vision, Docker, and Streamlit.",
+
+    skills_followup: "His focus is on transforming ideas into deployable products by combining AI models, backend engineering, analytics, and intuitive user experiences.",
+
+    ai: "Akash is deeply interested in Artificial Intelligence, Machine Learning, Computer Vision, NLP, Generative AI, Agentic Systems, and real-world AI applications.",
+
+    ai_followup: "He enjoys exploring how intelligent systems can automate decisions, improve productivity, and create meaningful user experiences across industries.",
+
+    fitness: "Akash maintains a disciplined gym routine and believes physical training and engineering share the same principles: consistency, progressive improvement, and measurable results.",
+
+    fitness_followup: "He views strength training as a practical lesson in discipline and long-term optimization, applying the same mindset to software development and AI projects.",
+
+    data: "Akash is fascinated by data engineering, feature engineering, analytics, and transforming raw information into actionable insights through intelligent systems.",
+
+    data_followup: "He enjoys building pipelines that collect, process, analyze, and serve data efficiently for machine learning applications.",
+
+    education: "Akash is pursuing a B.Tech in Artificial Intelligence and Machine Learning, focusing on machine learning, deep learning, computer vision, data science, and software engineering.",
+
+    education_followup: "Beyond academics, he spends significant time building real-world projects, learning deployment workflows, and studying production-grade AI systems.",
+
+    location: "Akash is based in India and actively collaborates through online communities, open-source projects, hackathons, and AI-focused learning initiatives.",
+
+    location_followup: "His work is designed with a global mindset, focusing on scalable products that can solve problems beyond geographical boundaries.",
+
+    hobbies: "His interests include AI research, fitness, technology trends, building side projects, exploring emerging tools, and continuously learning new technologies.",
+
+    hobbies_followup: "He enjoys transforming curiosity into products, often spending weekends experimenting with new AI models, frameworks, and software architectures.",
+
+    future: "Akash aims to become a world-class AI Engineer capable of building intelligent systems that combine machine learning, data engineering, software architecture, and human-centered design.",
+
+    future_followup: "He is particularly excited about the future of Agentic AI, LLM applications, autonomous systems, and AI-powered products that create real-world impact.",
+
+    mindset: "Akash believes great engineering is the combination of curiosity, discipline, and execution. Ideas matter, but shipped products matter more.",
+
+    mindset_followup: "He focuses on learning by building, treating every project as an opportunity to master a new technology stack or solve a meaningful problem.",
+
+    hire: "Akash is actively seeking opportunities in AI/ML Engineering, Data Science, Machine Learning, Computer Vision, NLP, Data Engineering, and Full-Stack AI Development.",
+
+    hire_followup: "He is looking for ambitious teams where he can contribute to impactful products, learn from experienced engineers, and continue growing as a builder.",
+
+    looking_for: "He is interested in AI/ML Engineer, Machine Learning Engineer, Data Scientist, AI Developer, Computer Vision Engineer, and Data Engineering roles.",
+
+    looking_for_followup: "His ideal environment combines innovation, ownership, continuous learning, and the opportunity to build products from concept to deployment.",
+
+    default: "Greetings. I am Akash's AI Twin (AM.コア). Ask me about his AI projects, machine learning journey, computer vision systems, LLM applications, fitness discipline, or future ambitions."
   };
+
 
   // Web Audio Synth Click
   function initAudio() {
@@ -65,17 +86,17 @@
       initAudio();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
-      
+
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-      
+
       osc.type = 'sine';
       osc.frequency.setValueAtTime(1200 + Math.random() * 600, audioCtx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.04);
-      
+
       gain.gain.setValueAtTime(0.012, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04);
-      
+
       osc.start();
       osc.stop(audioCtx.currentTime + 0.04);
     } catch (e) {
@@ -89,21 +110,21 @@
       initAudio();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
-      
+
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-      
+
       osc.type = 'triangle';
       const startFreq = isUp ? 300 : 800;
       const endFreq = isUp ? 800 : 300;
-      
+
       osc.frequency.setValueAtTime(startFreq, audioCtx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(endFreq, audioCtx.currentTime + 0.25);
-      
+
       gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
       gain.gain.linearRampToValueAtTime(0.015, audioCtx.currentTime + 0.08);
       gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
-      
+
       osc.start();
       osc.stop(audioCtx.currentTime + 0.25);
     } catch (e) {
@@ -116,7 +137,7 @@
     const canvas = document.getElementById('chatbot-wave-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
+
     let w = canvas.width = canvas.parentElement.clientWidth;
     let h = canvas.height = canvas.parentElement.clientHeight;
     let phaseOffset = 0;
@@ -128,7 +149,7 @@
 
     function drawWave() {
       ctx.clearRect(0, 0, w, h);
-      
+
       // Interpolate wave physics based on state
       const targetAmp = isAiThinking ? 12 : 3;
       const targetSpeed = isAiThinking ? 0.22 : 0.03;
@@ -140,20 +161,20 @@
       // Extract current amber color prefix dynamically from CSS
       const bodyStyle = getComputedStyle(document.body);
       const amberColor = bodyStyle.getPropertyValue('--amber').trim() || '#fbbf24';
-      
+
       // Draw 3 overlaying sine waves with different offsets/opacities
       for (let waveIndex = 0; waveIndex < 3; waveIndex++) {
         ctx.beginPath();
         ctx.lineWidth = waveIndex === 0 ? 1.5 : 0.8;
         const opacity = waveIndex === 0 ? 0.75 : 0.35 - waveIndex * 0.1;
-        
+
         ctx.strokeStyle = amberColor + Math.round(opacity * 255).toString(16).padStart(2, '0');
 
         const freqMult = 0.008 + waveIndex * 0.004;
         const phaseShift = waveIndex * Math.PI * 0.35;
 
         for (let x = 0; x < w; x++) {
-          const y = h / 2 + Math.sin(x * freqMult + phaseOffset + phaseShift) * waveAmplitude * Math.cos(x * 0.001 - Math.PI/2);
+          const y = h / 2 + Math.sin(x * freqMult + phaseOffset + phaseShift) * waveAmplitude * Math.cos(x * 0.001 - Math.PI / 2);
           if (x === 0) {
             ctx.moveTo(x, y);
           } else {
@@ -165,13 +186,13 @@
 
       waveId = requestAnimationFrame(drawWave);
     }
-    
+
     if (waveId) cancelAnimationFrame(waveId);
     drawWave();
   }
 
   // Sound telemetry button toggle
-  window.toggleAISound = function() {
+  window.toggleAISound = function () {
     window.aiSoundEnabled = !window.aiSoundEnabled;
     const btn = document.getElementById('acb-sound-btn');
     if (btn) {
@@ -282,11 +303,11 @@
 
   const quickQs = ['Projects?', 'Education?', 'Where from?', 'Future vision?', 'Likes?', 'Available?'];
 
-  window.initAI = function() {
+  window.initAI = function () {
     const qw = document.getElementById('ai-quick');
     if (!qw) return;
     qw.innerHTML = '';
-    
+
     quickQs.forEach(q => {
       const b = document.createElement('button');
       b.className = 'acb-q-btn';
@@ -305,7 +326,7 @@
     let charIndex = 0;
     element.textContent = '';
     const msgs = document.getElementById('ai-msgs');
-    
+
     function stream() {
       if (charIndex < text.length) {
         element.textContent += text.charAt(charIndex);
@@ -327,27 +348,27 @@
   // Manage bot query, thinking state, and output stream
   async function askTwin(msg) {
     if (isAiThinking) return;
-    
+
     addAIMsg(msg, 'user');
-    
+
     const msgs = document.getElementById('ai-msgs');
     if (!msgs) return;
-    
+
     // Set thinking state true to trigger rapid waveform kinetics
     isAiThinking = true;
-    
+
     const t = document.createElement('div');
     t.className = 'acb-typing';
     t.innerHTML = '<span></span><span></span><span></span>';
     msgs.appendChild(t);
     msgs.scrollTop = msgs.scrollHeight;
-    
+
     playSynthSweep(true);
-    
+
     try {
       const replyText = await getAIResponse(msg);
       t.remove();
-      
+
       const d = document.createElement('div');
       d.className = 'acb-msg bot';
       msgs.appendChild(d);
@@ -362,7 +383,7 @@
   function addAIMsg(text, type) {
     const msgs = document.getElementById('ai-msgs');
     if (!msgs) return;
-    
+
     if (type === 'user') {
       const d = document.createElement('div');
       d.className = 'acb-msg user';
@@ -373,19 +394,19 @@
     }
   }
 
-  window.sendAI = function() {
+  window.sendAI = function () {
     if (isAiThinking) return;
-    
+
     const inp = document.getElementById('ai-input');
     if (!inp || !inp.value.trim()) return;
-    
+
     const msg = inp.value.trim();
     inp.value = '';
-    
+
     askTwin(msg);
   };
 
-  window.openAI = function() {
+  window.openAI = function () {
     aiOpen = !aiOpen;
     const b = document.getElementById('ai-box');
     if (b) {

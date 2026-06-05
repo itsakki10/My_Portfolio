@@ -39,10 +39,10 @@
       r: 140,
       speed: 0.009,
       phase: 0,
-      color: "#fbbf24",
+      color: "#e9cb25",
     },
     {
-      text: "[ エージェント.synapse ]",
+      text: "[ Vision_Vox ]",
       name: "AI Agents",
       r: 165,
       speed: -0.007,
@@ -50,7 +50,7 @@
       color: "#22d3ee",
     },
     {
-      text: "[ 将棋.shogi_ai ]",
+      text: "[ 将棋.Anime_ai ]",
       name: "Chess & Shogi AI",
       r: 185,
       speed: 0.005,
@@ -58,11 +58,11 @@
       color: "#a78bfa",
     },
     {
-      text: "[ 燃料.caffeine ]",
-      name: "Caffeine",
+      text: "[ Python.py ]",
+      name: "Flask",
       r: 140,
       speed: 0.009,
-      phase: 0,
+      phase: 1,
       color: "#fbbf24",
     },
     {
@@ -78,11 +78,11 @@
       name: "Chess & Shogi AI",
       r: 185,
       speed: 0.005,
-      phase: 3.0,
+      phase: 3.5,
       color: "#a78bfa",
     },
     {
-      text: "[ ビジョン.vox ]",
+      text: "[ Computer Vision ]",
       name: "Computer Vision",
       r: 150,
       speed: -0.008,
@@ -90,7 +90,7 @@
       color: "#22d3ee",
     },
     {
-      text: "[ モデル.weights ]",
+      text: "[ bias.weights ]",
       name: "Deep Learning",
       r: 185,
       speed: 0.007,
@@ -98,7 +98,7 @@
       color: "#fbbf24",
     },
     {
-      text: "[ 勝利.hackathon ]",
+      text: "[ hackathon.勝利 ]",
       name: "Competitions",
       r: 210,
       speed: -0.004,
@@ -114,7 +114,7 @@
       color: "#faf7f2",
     },
     {
-      text: "[ 展開.deploy ]",
+      text: "[ 展開.deployment ]",
       name: "System Design",
       r: 190,
       speed: -0.006,

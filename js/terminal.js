@@ -4,59 +4,81 @@
  * Added: Tab-autocomplete, history log traversal (up/down arrow), and rich ASCII commands.
  */
 
-(function() {
-  const termInput = document.getElementById('term-input');
-  const termBody = document.getElementById('term-body');
+(function () {
+  const termInput = document.getElementById("term-input");
+  const termBody = document.getElementById("term-body");
 
   let commandHistory = [];
   let historyIndex = -1;
-  const availableCmds = ['help', 'connect', 'skills', 'focus', 'coffee', 'clear', 'system', 'diagnostics', 'chess', 'shogi', 'rubik', 'matrix', 'anime', 'manga', 'github'];
+  const availableCmds = [
+    "help",
+    "connect",
+    "skills",
+    "focus",
+    "coffee",
+    "clear",
+    "system",
+    "diagnostics",
+    "chess",
+    "shogi",
+    "rubik",
+    "matrix",
+    "anime",
+    "manga",
+    "github",
+  ];
 
   // Simple HTML escaping helper
   function escapeHtml(str) {
     return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   // Print raw output div into terminal stdout
   function printOutput(text, isHtml = false) {
     if (!termBody) return;
-    const inputLine = termBody.querySelector('.term-input-line');
-    
-    const div = document.createElement('div');
-    div.className = 'term-output';
+    const inputLine = termBody.querySelector(".term-input-line");
+
+    const div = document.createElement("div");
+    div.className = "term-output";
     if (isHtml) {
       div.innerHTML = text;
     } else {
       div.textContent = text;
     }
-    
+
     if (inputLine) {
       termBody.insertBefore(div, inputLine);
     } else {
       termBody.appendChild(div);
     }
-    
+
     // Auto-scroll to bottom
     termBody.scrollTop = termBody.scrollHeight;
   }
 
   // Print guest@mind prompt prefix
   function printPromptEcho(cmd) {
-    printOutput(`<span class="term-prompt">guest@mind:~$</span> ${escapeHtml(cmd)}`, true);
+    printOutput(
+      `<span class="term-prompt">guest@mind:~$</span> ${escapeHtml(cmd)}`,
+      true,
+    );
   }
 
   // Global command executor function
-  window.runTermCommand = async function(inputStr) {
+  window.runTermCommand = async function (inputStr) {
     const trimmed = inputStr.trim();
     if (!trimmed) return;
 
     // Save to history
-    if (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== trimmed) {
+    if (
+      commandHistory.length === 0 ||
+      commandHistory[commandHistory.length - 1] !== trimmed
+    ) {
       commandHistory.push(trimmed);
     }
     historyIndex = -1;
@@ -69,7 +91,7 @@
     const cmd = args[0].toLowerCase();
 
     switch (cmd) {
-      case 'help':
+      case "help":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; white-space: pre-wrap; color: var(--text2)">` +
           `Available commands:\n` +
@@ -86,103 +108,136 @@
           `  <span style="color: var(--amber)">anime</span>       - Fetch classic cyber-manga terminal telemetry.\n` +
           `  <span style="color: var(--amber)">clear</span>       - Purge terminal stdout buffer.` +
           `</pre>`,
-          true
+          true,
         );
         break;
 
-      case 'connect':
+      case "connect":
         printOutput(
           `<div style="color: var(--text2); line-height: 1.7;">` +
           `<span style="color: var(--cyan)">[LINKING] Establishing secure neural sockets... SUCCESS.</span><br>` +
           `==================================================<br>` +
-          `• <b>Email:</b>     <a href="mailto:akash.mehra@email.com" class="hoverable" style="color: var(--amber); text-decoration: none;">akash.mehra@email.com</a><br>` +
-          `• <b>Phone:</b>     +91 98765 43210<br>` +
-          `• <b>GitHub:</b>    <a href="https://github.com" target="_blank" class="hoverable" style="color: var(--amber); text-decoration: none;">github.com/akashmehra</a><br>` +
-          `• <b>LinkedIn:</b>  <a href="https://linkedin.com" target="_blank" class="hoverable" style="color: var(--amber); text-decoration: none;">linkedin.com/in/akashmehra</a><br>` +
-          `• <b>Resume:</b>    <a href="#" class="hoverable" style="color: var(--lime); text-decoration: underline;">Download PDF resume.pdf</a><br>` +
+          `• <b>Email:</b>     <a href="mailto:akashmehra.aidev@gmail.com" class="hoverable" style="color: var(--amber); text-decoration: none;">akashmehra.aidev@gmail.com</a><br>` +
+          `• <b>Phone:</b>     +91 7248740615<br>` +
+          `• <b>GitHub:</b>    <a href="https://github.com/itsakki10" target="_blank" class="hoverable" style="color: var(--amber); text-decoration: none;">https://github.com/itsakki10</a><br>` +
+          `• <b>LinkedIn:</b>  <a href="https://www.linkedin.com/in/akash-mehra-ml" target="_blank" class="hoverable" style="color: var(--amber); text-decoration: none;">www.linkedin.com/in/akash-mehra-ml</a><br>` +
+          `• <b>Resume:</b>   <a href="public/resume/Akash_Mehra_Resume.pdf"
+   target="_blank"
+   class="hoverable"
+   style="color: var(--cyan); text-decoration: none;">
+   [VIEW]
+</a>
+&nbsp;
+<a href="public/resume/Akash_Mehra_Resume.pdf"
+   download="Akash_Mehra_Resume.pdf"
+   class="hoverable"
+   style="color: var(--lime); text-decoration: none;">
+   [DOWNLOAD]
+</a><br>` +
           `==================================================` +
           `</div>`,
-          true
+          true,
         );
         if (window.unlockAchievement) {
-          window.unlockAchievement('contact_view', '📞 Secure Channel Socket Connected!');
+          window.unlockAchievement(
+            "contact_view",
+            "📞 Secure Channel Socket Connected!",
+          );
         }
         break;
 
-      case 'skills':
+      case "skills":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; white-space: pre; color: var(--v); line-height: 1.4;">` +
           `AI/ML Core Architecture Tree:\n` +
           `==================================================\n` +
-          `├── [Deep Learning]    ────── PyTorch, TensorFlow, CUDA, TensorRT\n` +
-          `├── [Computer Vision]  ────── YOLOv8, OpenCV, Image Segmentation\n` +
-          `├── [NLP & Agents]     ────── LangChain, FAISS, LLMs, Vector DBs\n` +
-          `└── [MLOps & Dev]      ────── Docker, FastAPI, Redis, Git, CI/CD\n` +
+          `├── [AI & ML]           ────── Python, PyTorch, Scikit-Learn, Deep Learning\n` +
+          `├── [Computer Vision]   ────── OpenCV, MediaPipe, Face Recognition, Biometrics\n` +
+          `├── [NLP & LLMs]        ────── LLMs, NLP, Semantic Search, Prompt Engineering\n` +
+          `├── [Data Engineering]  ────── SQL, Analytics, ETL, Feature Engineering\n` +
+          `└── [Full-Stack AI]     ────── FastAPI, Docker, Supabase, Streamlit\n` +
           `==================================================\n` +
-          `<span style="color: var(--text3); font-size: 11px;">(Tip: Type 'focus' to see how these map onto projects in Focus Mode!)</span>` +
+          `<span style="color: var(--text3); font-size: 11px;">(Tip: Type 'focus' to visualize how these systems connect across projects.)</span>` +
           `</pre>`,
-          true
+          true,
         );
         break;
 
-      case 'focus':
+      case "focus":
         if (window.toggleFocusMode) {
           window.toggleFocusMode();
-          const stateStr = window.focusModeActive ? 'STRUCTURED FOCUS (Snapped)' : 'CONTROLLED CHAOS (Floating)';
-          const color = window.focusModeActive ? 'var(--cyan)' : 'var(--amber)';
+          const stateStr = window.focusModeActive
+            ? "STRUCTURED FOCUS (Snapped)"
+            : "CONTROLLED CHAOS (Floating)";
+          const color = window.focusModeActive ? "var(--cyan)" : "var(--amber)";
           printOutput(
             `[SYSTEM] Snapping physics updated. State transition initialized.<br>` +
             `Layout Mode set to: <span style="color: ${color}; font-weight: bold;">${stateStr}</span>`,
-            true
+            true,
           );
         } else {
-          printOutput(`[ERROR] State manager toggleFocusMode not loaded.`, false);
+          printOutput(
+            `[ERROR] State manager toggleFocusMode not loaded.`,
+            false,
+          );
         }
         break;
 
-      case 'coffee':
+      case "coffee":
         if (window.triggerCaffeineOverdrive) {
           window.triggerCaffeineOverdrive();
-          const stateStr = window.caffeineOverdrive ? 'CAFFEINE OVERDRIVE ACTIVE (4.0GHz)' : 'NORMAL SPEED LIMIT';
-          const color = window.caffeineOverdrive ? 'var(--amber)' : 'var(--text3)';
-          
+          const stateStr = window.caffeineOverdrive
+            ? "CAFFEINE OVERDRIVE ACTIVE (4.0GHz)"
+            : "NORMAL SPEED LIMIT";
+          const color = window.caffeineOverdrive
+            ? "var(--amber)"
+            : "var(--text3)";
+
           if (window.caffeineOverdrive) {
             printOutput(
               `<span style="color: var(--amber)">>> Injecting double espresso shots...</span><br>` +
               `>> Overclocking neural canvas speed vectors by 3.5x...<br>` +
               `System Status: <span style="color: ${color}; font-weight: bold;">${stateStr}</span>`,
-              true
+              true,
             );
           } else {
             printOutput(
               `>> Flushed caffeine from thread buffers.<br>` +
               `System Status: <span style="color: ${color}; font-weight: bold;">${stateStr}</span>`,
-              true
+              true,
             );
           }
         } else {
-          printOutput(`[ERROR] State manager triggerCaffeineOverdrive not loaded.`, false);
+          printOutput(
+            `[ERROR] State manager triggerCaffeineOverdrive not loaded.`,
+            false,
+          );
         }
         break;
 
-      case 'system':
-      case 'diagnostics':
+      case "system":
+      case "diagnostics":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; color: var(--lime); line-height: 1.3;">` +
-          `================= MODEL TELEMETRY REPORT =================\n` +
-          `• CPU Usage: [|||||||||||||||||||         ] 68.4% (8 Threads Active)\n` +
-          `• GPU Memory: [|||||||||||||||||||||||||   ] 8.2GB / 12GB (CUDA 12.1)\n` +
-          `• ONNX Model: YOLOv8 FP16 Quantized (Loaded)\n` +
-          `• FAISS Index: 10M Semantic Chunk Arrays (Synced)\n` +
-          `• Chat Persona Core: AkashAI Active (${window.currentPersona || 'professional'})\n` +
-          `• System Status: ALL SYSTEMS OPERATIONAL (Caffeine: ${window.caffeineOverdrive ? 'OVERDRIVE' : 'NORMAL'})\n` +
+          `================= NEURAL CORE DIAGNOSTICS =================\n` +
+          `• Identity: Akash Mehra (AI/ML Engineer)\n` +
+          `• Education: B.Tech Artificial Intelligence & Machine Learning\n` +
+          `• Core Domains: AI/ML | Computer Vision | NLP | Data Engineering\n` +
+          `• Active Projects: 5 Production Systems Online\n` +
+          `• CVortex Engine: ATS Intelligence Module (ACTIVE)\n` +
+          `• RepSense Core: Pose Estimation & AI Coaching (ACTIVE)\n` +
+          `• NeuralCanvas: Generative AI Pipeline (ACTIVE)\n` +
+          `• Vision Vox: Face & Voice Biometrics (ACTIVE)\n` +
+          `• SecureML Fabric: Threat Detection Engine (ACTIVE)\n` +
+          `• Deployment Stack: FastAPI | Docker | Streamlit | Supabase\n` +
+          `• System Status: ALL SYSTEMS OPERATIONAL\n` +
           `==========================================================` +
           `</pre>`,
           true
         );
         break;
 
-      case 'chess':
+      case "chess":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; color: #a78bfa; line-height: 1.25;">` +
           `   a   b   c   d   e   f   g   h\n` +
@@ -197,11 +252,11 @@
           `   a   b   c   d   e   f   g   h\n\n` +
           `<span style="color:var(--text2);font-style:italic">"Strategy represents calculated anticipation. Plan your next move."</span>` +
           `</pre>`,
-          true
+          true,
         );
         break;
 
-      case 'shogi':
+      case "shogi":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; color: var(--amber); line-height: 1.25;">` +
           `   9   8   7   6   5   4   3   2   1\n` +
@@ -217,30 +272,31 @@
           `   9   8   7   6   5   4   3   2   1\n\n` +
           `<span style="color:var(--text2);font-style:italic">"将棋 (Shogi): Every captured piece is a potential resource waiting to be dropped. Recycle your buffers."</span>` +
           `</pre>`,
-          true
+          true,
         );
         break;
 
-      case 'anime':
-      case 'manga':
+      case "anime":
+      case "manga":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; color: var(--cyan); line-height: 1.35;">` +
-          `[NEURAL RETRIEVAL] Akira & Ghost in the Shell archives loaded:\n` +
-          `--------------------------------------------------\n` +
-          `"The Net is vast and infinite..." — Puppet Master (GITS)\n` +
-          `"My brain cells are connected to the network, processing\n` +
-          ` millions of computations. Code is just another medium."\n` +
-          `--------------------------------------------------\n` +
-          `   \\    /\\  \n` +
-          `    )  ( ')   [ AM.コア System Core Active ]\n` +
-          `   (  /  )    Neo-Tokyo Sub-routines Synced.\n` +
-          `    \\(__)|    Sketchbook Ink Engine Engaged.\n` +
+          `[NEURAL INSPIRATION MATRIX]\n` +
+          `==================================================\n` +
+          `⚡ Naruto              | Persistence Module\n` +
+          `🏴‍☠️ One Piece          | Dream Pursuit Engine\n` +
+          `🗡 Solo Leveling       | Self-Evolution Protocol\n` +
+          `⚽ Blue Lock           | Competitive Mindset Core\n` +
+          `💥 Dragon Ball Z       | Limit Break System\n` +
+          `♟ Classroom of the Elite | Strategic Analysis Layer\n` +
+          `==================================================\n` +
+          `Status: Motivation Levels Stable\n` +
+          `Current Objective: Become a World-Class AI Engineer\n` +
           `</pre>`,
-          true
+          true,
         );
         break;
 
-      case 'rubik':
+      case "rubik":
         printOutput(
           `<pre style="font-family: inherit; margin: 0; color: var(--amber); line-height: 1.2;">` +
           `Unfolded 3x3x3 State:\n` +
@@ -255,69 +311,106 @@
           `        [W][W][W]\n\n` +
           `<span style="color:var(--text2);font-style:italic">Active State Space: CFOP Phase 3 (OLL Matrix solver initialized)</span>` +
           `</pre>`,
-          true
+          true,
         );
         break;
 
-      case 'matrix':
-        printOutput(`<span style="color:#22c55e">Initializing stream logic...</span>`, true);
+      case "matrix":
+        printOutput(
+          `<span style="color:#22c55e">Initializing stream logic...</span>`,
+          true,
+        );
         let count = 0;
         const interval = setInterval(() => {
           if (count > 8) {
             clearInterval(interval);
-            printOutput(`<span style="color:#22c55e">Matrix connection socket closed safely.</span>`, true);
+            printOutput(
+              `<span style="color:#22c55e">Matrix connection socket closed safely.</span>`,
+              true,
+            );
             return;
           }
-          let line = '';
+          let line = "";
           for (let i = 0; i < 40; i++) {
-            line += Math.random() > 0.5 ? '1' : '0';
+            line += Math.random() > 0.5 ? "1" : "0";
           }
-          printOutput(`<span style="color:#22c55e;font-family:monospace;letter-spacing:2px;">${line}</span>`, true);
+          printOutput(
+            `<span style="color:#22c55e;font-family:monospace;letter-spacing:2px;">${line}</span>`,
+            true,
+          );
           count++;
         }, 150);
         break;
 
-      case 'github':
-        const username = args[1] || 'akashmehra';
-        printOutput(`<span style="color: var(--cyan)">[NET] Querying GitHub API socket for '${escapeHtml(username)}'...</span>`, true);
+      case "github":
+        const username = args[1] || "itsakki10";
+        printOutput(
+          `<span style="color: var(--cyan)">[GITHUB LINK ESTABLISHED] Accessing repository matrix for '${escapeHtml(username)}'...</span>`,
+          true,
+        );
         try {
-          const res = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`);
+          const res = await fetch(
+            `https://api.github.com/users/${encodeURIComponent(username)}`,
+          );
           if (!res.ok) {
-            throw new Error(`User not found or rate limited (status ${res.status})`);
+            throw new Error(
+              `User not found or rate limited (status ${res.status})`,
+            );
           }
           const userData = await res.json();
-          const createdDate = new Date(userData.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+          const createdDate = new Date(userData.created_at).toLocaleDateString(
+            undefined,
+            { year: "numeric", month: "long", day: "numeric" },
+          );
           printOutput(
             `<pre style="font-family: inherit; margin: 0; color: var(--lime); line-height: 1.45;">` +
             `================== GITHUB DATA PORT ==================\n` +
-            `• User Profile:   ${userData.login} (${userData.name || 'N/A'})\n` +
-            `• Bio:            ${userData.bio || 'No bio set.'}\n` +
-            `• Public Repos:   ${userData.public_repos}\n` +
-            `• Followers:      ${userData.followers} / Following: ${userData.following}\n` +
+            `• User Profile:    ${userData.login} (${userData.name || "N/A"})\n` +
+            `• Bio:             ${userData.bio || "AI/ML Engineer & Builder"}\n` +
+            `• Public Repos:    ${userData.public_repos}\n` +
+            `• Followers:       ${userData.followers} / Following: ${userData.following}\n` +
             `• Account Created: ${createdDate}\n` +
-            `• Location:       ${userData.location || 'N/A'}\n` +
-            `• Git URL:        <a href="${userData.html_url}" target="_blank" style="color: var(--amber); text-decoration: none;">${userData.html_url}</a>\n` +
+            `• Location:        ${userData.location || "India"}\n` +
+            `• Git URL:         <a href="${userData.html_url}" target="_blank" style="color: var(--amber); text-decoration: none;">${userData.html_url}</a>\n` +
+            `------------------------------------------------------\n` +
+            `Core Repository Matrix:\n` +
+            `🔐 SecureML Fabric   → Cybersecurity AI\n` +
+            `📄 CVortex           → ATS Intelligence Platform\n` +
+            `🏋️ RepSense AI      → AI Gym Coach\n` +
+            `🎨 NeuralCanvas      → Generative AI Art\n` +
+            `🎓 Auth Vision Vox   → Smart Attendance System\n` +
+            `------------------------------------------------------\n` +
+            `Status: BUILDING IN PUBLIC\n` +
             `======================================================` +
             `</pre>`,
-            true
+            true,
           );
           if (window.unlockAchievement) {
-            window.unlockAchievement('github_sync', '🐙 GitHub Live Telemetry Synced!');
+            window.unlockAchievement(
+              "github_sync",
+              "🐙 GitHub Live Telemetry Synced!",
+            );
           }
         } catch (err) {
-          printOutput(`[ERROR] Failed to fetch GitHub socket: ${err.message}`, false);
+          printOutput(
+            `[ERROR] Failed to fetch GitHub socket: ${err.message}`,
+            false,
+          );
         }
         break;
 
-      case 'clear':
+      case "clear":
         if (termBody) {
-          const outputs = termBody.querySelectorAll('.term-output');
-          outputs.forEach(el => el.remove());
+          const outputs = termBody.querySelectorAll(".term-output");
+          outputs.forEach((el) => el.remove());
         }
         break;
 
       default:
-        printOutput(`Command not found: '${escapeHtml(cmd)}'. Type 'help' for available commands.`, false);
+        printOutput(
+          `Command not found: '${escapeHtml(cmd)}'. Type 'help' for available commands.`,
+          false,
+        );
         break;
     }
   };
@@ -326,13 +419,12 @@
   function bindKeyListeners(inputEl) {
     if (!inputEl) return;
 
-    inputEl.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
+    inputEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
         const value = inputEl.value;
-        inputEl.value = '';
+        inputEl.value = "";
         window.runTermCommand(value);
-      } 
-      else if (e.key === 'ArrowUp') {
+      } else if (e.key === "ArrowUp") {
         e.preventDefault();
         if (commandHistory.length > 0) {
           if (historyIndex === -1) {
@@ -342,8 +434,7 @@
           }
           inputEl.value = commandHistory[historyIndex];
         }
-      } 
-      else if (e.key === 'ArrowDown') {
+      } else if (e.key === "ArrowDown") {
         e.preventDefault();
         if (historyIndex !== -1) {
           if (historyIndex < commandHistory.length - 1) {
@@ -351,26 +442,25 @@
             inputEl.value = commandHistory[historyIndex];
           } else {
             historyIndex = -1;
-            inputEl.value = '';
+            inputEl.value = "";
           }
         }
-      } 
-      else if (e.key === 'Tab') {
+      } else if (e.key === "Tab") {
         e.preventDefault();
         const typed = inputEl.value.trim().toLowerCase();
         if (!typed) {
           // Print all available commands on empty Tab
-          printPromptEcho('[Tab]');
-          printOutput(`Available Commands: ${availableCmds.join(', ')}`);
+          printPromptEcho("[Tab]");
+          printOutput(`Available Commands: ${availableCmds.join(", ")}`);
           return;
         }
 
-        const matches = availableCmds.filter(c => c.startsWith(typed));
+        const matches = availableCmds.filter((c) => c.startsWith(typed));
         if (matches.length === 1) {
           inputEl.value = matches[0];
         } else if (matches.length > 1) {
-          printPromptEcho(inputEl.value + ' [Tab]');
-          printOutput(`Matching Commands: ${matches.join(', ')}`);
+          printPromptEcho(inputEl.value + " [Tab]");
+          printOutput(`Matching Commands: ${matches.join(", ")}`);
         }
       }
     });
@@ -378,23 +468,25 @@
 
   // Bind input listeners
   function initTerminal() {
-    const inputEl = document.getElementById('term-input');
+    const inputEl = document.getElementById("term-input");
     if (inputEl) {
       bindKeyListeners(inputEl);
-      
-      const termContainer = document.querySelector('.term-container');
+
+      const termContainer = document.querySelector(".term-container");
       if (termContainer) {
-        termContainer.addEventListener('click', () => {
+        termContainer.addEventListener("click", () => {
           inputEl.focus();
         });
       }
     }
   }
 
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  if (
+    document.readyState === "complete" ||
+    document.readyState === "interactive"
+  ) {
     initTerminal();
   } else {
-    document.addEventListener('DOMContentLoaded', initTerminal);
+    document.addEventListener("DOMContentLoaded", initTerminal);
   }
-
 })();
