@@ -1,58 +1,104 @@
-# Akash Mehra | AI/ML Engineer & Builder Portfolio
+# 🧠 Akash Mehra | AI/ML Engineer Portfolio
 
-A futuristic, highly interactive personal portfolio website showcasing the neural mind, projects, and developmental milestones of Akash Mehra, AI/ML Engineer and Systems Builder.
+A futuristic and interactive portfolio experience showcasing my journey as an AI/ML Engineer, Data Engineering enthusiast, and builder of intelligent systems.
+
+🌐 Live Portfolio: https://akashmehraaidev.vercel.app
 
 ---
 
-## 🧠 Core Architecture & Features
+## 🚀 Highlights
 
-1. **Futuristic Neural Preloader**: A custom high-fidelity loader featuring a dual-ring concentric spinner, real-time boot status notifications, and smooth fading transitions.
-2. **3D Projected Brain Canvas**: A mathematical 2D canvas simulating a 3D point-cloud brain model. Supports mouse coordinate drag rotation, yaw/pitch physics, and a parallax floating perspective.
-3. **Interactive Developer Console**: A retro-style bash terminal simulator supporting shell command interpretations, custom action triggers, and responsive telemetry dumps.
-4. **Adaptive Light/Dark Theme**: A creative theme switcher implementing soft dark cocoa (`Dark Core`) and bright cream-crema (`Light Core`) visual styling tokens with dynamic canvas color adaptation.
-5. **AkashAI Assistant**: A clean, single-persona smart AI chatbot twin with procedural typing animations, sound sweeps, and multi-turn context memory.
-6. **Symmetric Education Timeline**: A structured section detailing Akash's academic focus, key coursework, and competitive ELO milestones.
+### Neural Mind Interface
+
+An immersive portfolio experience designed as a digital representation of my interests, projects, and technical expertise.
+
+### Interactive AI Twin (AM.コア)
+
+A custom AI-powered knowledge base that allows visitors to explore my projects, skills, interests, and engineering journey through natural conversation.
+
+### 3D Neural Brain Visualization
+
+An interactive point-cloud brain simulation rendered using the HTML5 Canvas API with dynamic motion and user interaction.
+
+### Developer Terminal
+
+A cyberpunk-inspired terminal interface featuring custom commands, project exploration, system diagnostics, and AI knowledge retrieval.
+
+### Project Showcase
+
+Featuring real-world AI systems including:
+
+* 🔐 SecureML Fabric
+* 📄 CVortex
+* 🏋️ RepSense AI
+* 🎨 NeuralCanvas
+* 🎓 Auth Vision Vox
+
+### Adaptive Theme Engine
+
+Custom light and dark modes with dynamic visual effects and responsive UI behavior.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Structure**: Semantic HTML5 & DOM tree coordination.
-- **Styling**: Vanilla CSS3 Custom Variables, CSS Keyframe Animations, Grid/Flexbox coordination.
-- **Physics & Logic**: Vanilla JavaScript (ES6+), Canvas 2D projection mathematics, Web Audio API synthesis.
-- **Hosting / serving**: Served statically via Node `serve` or Python `http.server`.
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+
+### Visualization & Interaction
+
+* HTML5 Canvas
+* Web Audio API
+* Custom Animation Systems
+
+### Deployment
+
+* Vercel
 
 ---
 
-## 🚀 Local Installation & Run
+## 📂 Project Structure
 
-1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/akashmehra/portfolio.git
-   cd portfolio
-   ```
-
-2. Run a local web server:
-   - Using **Node.js (npm)**:
-     ```bash
-     npx serve .
-     ```
-   - Using **Python**:
-     ```bash
-     python -m http.server 8000
-     ```
-
-3. Open your browser and navigate to `http://localhost:3000` (or `http://localhost:8000`).
+```text
+Portfolio/
+├── index.html
+├── css/
+├── js/
+├── assets/
+└── README.md
+```
 
 ---
 
-## 📁 Repository Map
+## 💡 Features
 
-- `index.html` - Core HTML skeleton and responsive DOM targets.
-- `css/style.css` - CSS styling tokens, theme variables, and keyframe animations.
-- `js/main.js` - Global state coordinator, theme handlers, preloader, and accessibility scripts.
-- `js/background.js` - Floating stars background particle network rendering.
-- `js/brain-canvas.js` - 3D orbiting point-cloud brain canvas rendering.
-- `js/chatbot.js` - AkashAI twin chatbot messaging engine.
-- `js/terminal.js` - Developer console shell interpretation parser.
-- `requirements.txt` - Python package stack configurations for the underlying ML architectures.
+* Interactive AI Twin
+* 3D Brain Visualization
+* Developer Terminal
+* Dynamic Project Explorer
+* Responsive Design
+* Light / Dark Themes
+* Custom Animations
+* Keyboard Navigation
+* Portfolio Knowledge Base
+
+---
+
+## 🧠 About Me
+
+I'm an AI/ML Engineer passionate about Machine Learning, Computer Vision, NLP, Data Engineering, and building end-to-end AI products. My projects span cybersecurity, resume intelligence, fitness technology, biometrics, and generative AI.
+
+---
+
+## 📬 Connect
+
+* Email: [akashmehra.aidev@gmail.com](mailto:akashmehra.aidev@gmail.com)
+* GitHub: https://github.com/itsakki10
+* LinkedIn: https://linkedin.com/in/akash-mehra-ml
+
+---
+
+Built with curiosity, caffeine, and countless late-night debugging sessions. 🚀
