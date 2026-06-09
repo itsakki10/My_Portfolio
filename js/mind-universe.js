@@ -269,31 +269,41 @@
 
     nodes.forEach((node) => {
       if (node.type === "project") {
-        // Chaos home coordinates
-        node.homeX = node.rxRatio * (W - 270) + 10;
-        node.homeY = node.ryRatio * (H - 180) + 40;
+        // Chaos home coordinates (using smaller mobile widths if <= 768px)
+        const cardW = W > 768 ? 270 : 170;
+        const cardH = W > 768 ? 180 : 70;
+        node.homeX = node.rxRatio * (W - cardW) + 10;
+        node.homeY = node.ryRatio * (H - cardH) + 40;
 
         // Focus target coordinates
-        if (W > 900) {
+        if (W > 768) {
           node.tx = 60;
           node.ty = 60 + node.idx * ((H - 150) / 4);
         } else {
-          node.tx = (W - 250) / 2;
-          node.ty = 20 + node.idx * 105;
+          // Clean mobile column layout for projects on the left
+          node.tx = 15;
+          node.ty = 15 + node.idx * ((H - 90) / 4);
         }
       } else if (node.type === "skill") {
-        // Chaos home coordinates
-        node.homeX = node.rxRatio * (W - 140) + 10;
-        node.homeY = node.ryRatio * (H - 80) + 40;
+        // Chaos home coordinates (using smaller mobile widths if <= 768px)
+        const tagW = W > 768 ? 140 : 130;
+        const tagH = W > 768 ? 80 : 35;
+        node.homeX = node.rxRatio * (W - tagW) + 10;
+        node.homeY = node.ryRatio * (H - tagH) + 40;
 
         // Focus target coordinates
-        const radius =
-          W > 900 ? Math.min(180, H * 0.35) : Math.min(110, W * 0.35);
-        const centerX = W > 900 ? W * 0.68 : W / 2;
-        const centerY = W > 900 ? H / 2 : H / 2 + 100;
-        const angle = (node.idx / skillsData.length) * Math.PI * 2;
-        node.tx = centerX + Math.cos(angle) * radius - 50; // shift half tag width
-        node.ty = centerY + Math.sin(angle) * radius - 15; // shift half tag height
+        if (W > 768) {
+          const radius = Math.min(180, H * 0.35);
+          const centerX = W * 0.68;
+          const centerY = H / 2;
+          const angle = (node.idx / skillsData.length) * Math.PI * 2;
+          node.tx = centerX + Math.cos(angle) * radius - 50; // shift half tag width
+          node.ty = centerY + Math.sin(angle) * radius - 15; // shift half tag height
+        } else {
+          // Clean mobile column layout for skills on the right
+          node.tx = W - 145;
+          node.ty = 15 + node.idx * ((H - 50) / 11);
+        }
       } else if (node.type === "thought") {
         // Chaos home coordinates
         node.homeX = node.rxRatio * (W - 180) + 40;
@@ -598,6 +608,7 @@
     t += 16; // mock 60fps tick milliseconds
 
     const speedFactor = window.caffeineOverdrive ? 3.5 : 1.0;
+    const W = space.clientWidth || window.innerWidth;
 
     nodes.forEach((node) => {
       if (window.focusModeActive) {
@@ -616,13 +627,14 @@
           node.y += (node.ty - node.y) * 0.12;
         }
       } else {
-        // Floating wave math
+        // Floating wave math (reduced distance on mobile to prevent clutter)
+        const maxFloat = W > 768 ? 50 : 20;
         const floatX =
-          Math.sin(t * 0.001 * node.floatSpeed * speedFactor + node.phase) * 50;
+          Math.sin(t * 0.001 * node.floatSpeed * speedFactor + node.phase) * maxFloat;
         const floatY =
           Math.cos(
             t * 0.001 * node.floatSpeed * 0.8 * speedFactor + node.phase * 0.5,
-          ) * 50;
+          ) * maxFloat;
 
         node.x += (node.homeX + floatX - node.x) * 0.06;
         node.y += (node.homeY + floatY - node.y) * 0.06;

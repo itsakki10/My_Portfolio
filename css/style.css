@@ -109,6 +109,16 @@ body:has(.hoverable:hover) #cur-ring {
   opacity: 0;
 }
 
+/* Hide custom cursor and restore standard cursor on mobile/touch screens */
+@media (hover: none) or (pointer: coarse) {
+  #cur, #cur-ring {
+    display: none !important;
+  }
+  html, body {
+    cursor: auto !important;
+  }
+}
+
 /* Screen Transitions */
 .screen-sec {
   position: fixed;
@@ -298,6 +308,67 @@ body:has(.hoverable:hover) #cur-ring {
   .uni-nav {
     display: none; /* Hide nav links on mobile to prevent clutter */
   }
+  .uni-header {
+    padding: 0 1rem !important;
+  }
+  .uni-actions {
+    gap: 12px !important;
+  }
+  .caffeine-status {
+    display: none !important; /* Hide caffeine status to save space on mobile */
+  }
+  .btn-focus {
+    padding: 8px 16px !important;
+    font-size: 10px !important;
+  }
+  
+  /* Mind Space interactive node adjustments for mobile */
+  .mind-node.project {
+    width: 160px !important;
+    padding: 8px 12px !important;
+  }
+  .mind-node.project .np-desc {
+    display: none !important; /* Hide descriptions to prevent card overlap and clutter */
+  }
+  .mind-node.project .np-click-tip {
+    font-size: 7px !important;
+    margin-top: 4px !important;
+  }
+  .mind-node.project .np-title {
+    font-size: 13px !important;
+    margin-top: 2px !important;
+  }
+  .mind-node.skill {
+    width: 130px !important;
+    padding: 4px 10px !important;
+    font-size: 10px !important;
+  }
+  .mind-node.thought,
+  .mind-node.decor {
+    display: none !important; /* Hide thoughts and decor chess/sports/anime badges on mobile */
+  }
+}
+
+/* Theme Toggle Button styling */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(15deg);
+}
+
+.theme-toggle.active {
+  transform: scale(0.9) rotate(360deg);
 }
 
 .uni-logo {
